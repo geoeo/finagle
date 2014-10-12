@@ -11,8 +11,6 @@ import play.api.libs.json.JsValue
  */
 class DieStateCtrl extends FSMController{
 
-//  var transitionGraph: Map[String, FSMController] = _
-
   override def determineControllerFrom(command: JsValue)= ???
 
   val startingState: FSM = ???

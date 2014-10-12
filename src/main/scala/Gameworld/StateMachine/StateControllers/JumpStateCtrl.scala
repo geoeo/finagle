@@ -11,9 +11,6 @@ import play.api.libs.json.JsValue
  */
 class JumpStateCtrl extends FSMController{
 
-//  var transitionGraph: Map[String, FSMController] = _
-
-
   def determineControllerFrom(command: JsValue) = ???
 
   val startingState: FSM = ???

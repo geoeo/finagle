@@ -7,7 +7,7 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies for default#finagle_2.10;1.0 [compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies default#finagle_2.10;1.0->org.scala-lang#scala-library;2.10.3 [compile->default(compile)][0m
 [0m[[0minfo[0m] [0mResolving org.scala-lang#scala-library;2.10.3 ...[0m
-[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@5ecc357d[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@3c723c42[0m
 [0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-lang#scala-library;2.10.3[0m
 [0m[[0mdebug[0m] [0m	local: revision in cache: org.scala-lang#scala-library;2.10.3[0m
 [0m[[0mdebug[0m] [0m	found org.scala-lang#scala-library;2.10.3 in sbt-chain[0m
@@ -516,19 +516,9 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies default#finagle_2.10;1.0->org.specs2#specs2_2.10;2.3.13 [compile->default(compile)][0m
 [0m[[0minfo[0m] [0mResolving org.specs2#specs2_2.10;2.3.13 ...[0m
 [0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.specs2#specs2_2.10;2.3.13 {compile=[default(compile)]}[0m
-[0m[[0mdebug[0m] [0m		tried /Users/marchaubenstock/.ivy2/local/org.specs2/specs2_2.10/2.3.13/ivys/ivy.xml[0m
-[0m[[0mdebug[0m] [0m	local: no ivy file found for org.specs2#specs2_2.10;2.3.13[0m
-[0m[[0mdebug[0m] [0m		tried http://repo1.maven.org/maven2/org/specs2/specs2_2.10/2.3.13/specs2_2.10-2.3.13.pom[0m
-[0m[[0mdebug[0m] [0m	public: found md file for org.specs2#specs2_2.10;2.3.13[0m
-[0m[[0mdebug[0m] [0m		=> http://repo1.maven.org/maven2/org/specs2/specs2_2.10/2.3.13/specs2_2.10-2.3.13.pom (2.3.13)[0m
-[0m[[0mdebug[0m] [0mdownloading http://repo1.maven.org/maven2/org/specs2/specs2_2.10/2.3.13/specs2_2.10-2.3.13.pom ...[0m
-[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/specs2/specs2_2.10/2.3.13/specs2_2.10-2.3.13.pom[0m
-[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/specs2/specs2_2.10/2.3.13/specs2_2.10-2.3.13.pom.sha1[0m
-[0m[[0mdebug[0m] [0msha1 OK for http://repo1.maven.org/maven2/org/specs2/specs2_2.10/2.3.13/specs2_2.10-2.3.13.pom[0m
-[0m[[0mdebug[0m] [0m	[SUCCESSFUL ] org.specs2#specs2_2.10;2.3.13!specs2_2.10.pom(pom.original) (397ms)[0m
-[0m[[0mdebug[0m] [0m		tried /Users/marchaubenstock/.ivy2/local/org.specs2/specs2_2.10/2.3.13/jars/specs2_2.10.jar[0m
-[0m[[0mdebug[0m] [0m		tried http://repo1.maven.org/maven2/org/specs2/specs2_2.10/2.3.13/specs2_2.10-2.3.13.jar[0m
-[0m[[0mdebug[0m] [0m	found org.specs2#specs2_2.10;2.3.13 in public[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.specs2#specs2_2.10;2.3.13[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: org.specs2#specs2_2.10;2.3.13[0m
+[0m[[0mdebug[0m] [0m	found org.specs2#specs2_2.10;2.3.13 in sbt-chain[0m
 [0m[[0mdebug[0m] [0m== resolving dependencies default#finagle_2.10;1.0->org.specs2#specs2_2.10;2.3.13 [compile->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies default#finagle_2.10;1.0->org.specs2#specs2_2.10;2.3.13 [compile->compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies org.specs2#specs2_2.10;2.3.13->org.scala-lang#scala-compiler;2.10.4 [compile->master(*)][0m
@@ -553,19 +543,9 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies org.specs2#specs2_2.10;2.3.13->org.scalamacros#quasiquotes_2.10;2.0.0-M7 [compile->master(*)][0m
 [0m[[0minfo[0m] [0mResolving org.scalamacros#quasiquotes_2.10;2.0.0-M7 ...[0m
 [0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scalamacros#quasiquotes_2.10;2.0.0-M7 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
-[0m[[0mdebug[0m] [0m		tried /Users/marchaubenstock/.ivy2/local/org.scalamacros/quasiquotes_2.10/2.0.0-M7/ivys/ivy.xml[0m
-[0m[[0mdebug[0m] [0m	local: no ivy file found for org.scalamacros#quasiquotes_2.10;2.0.0-M7[0m
-[0m[[0mdebug[0m] [0m		tried http://repo1.maven.org/maven2/org/scalamacros/quasiquotes_2.10/2.0.0-M7/quasiquotes_2.10-2.0.0-M7.pom[0m
-[0m[[0mdebug[0m] [0m	public: found md file for org.scalamacros#quasiquotes_2.10;2.0.0-M7[0m
-[0m[[0mdebug[0m] [0m		=> http://repo1.maven.org/maven2/org/scalamacros/quasiquotes_2.10/2.0.0-M7/quasiquotes_2.10-2.0.0-M7.pom (2.0.0-M7)[0m
-[0m[[0mdebug[0m] [0mdownloading http://repo1.maven.org/maven2/org/scalamacros/quasiquotes_2.10/2.0.0-M7/quasiquotes_2.10-2.0.0-M7.pom ...[0m
-[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/scalamacros/quasiquotes_2.10/2.0.0-M7/quasiquotes_2.10-2.0.0-M7.pom[0m
-[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/scalamacros/quasiquotes_2.10/2.0.0-M7/quasiquotes_2.10-2.0.0-M7.pom.sha1[0m
-[0m[[0mdebug[0m] [0msha1 OK for http://repo1.maven.org/maven2/org/scalamacros/quasiquotes_2.10/2.0.0-M7/quasiquotes_2.10-2.0.0-M7.pom[0m
-[0m[[0mdebug[0m] [0m	[SUCCESSFUL ] org.scalamacros#quasiquotes_2.10;2.0.0-M7!quasiquotes_2.10.pom(pom.original) (397ms)[0m
-[0m[[0mdebug[0m] [0m		tried /Users/marchaubenstock/.ivy2/local/org.scalamacros/quasiquotes_2.10/2.0.0-M7/jars/quasiquotes_2.10.jar[0m
-[0m[[0mdebug[0m] [0m		tried http://repo1.maven.org/maven2/org/scalamacros/quasiquotes_2.10/2.0.0-M7/quasiquotes_2.10-2.0.0-M7.jar[0m
-[0m[[0mdebug[0m] [0m	found org.scalamacros#quasiquotes_2.10;2.0.0-M7 in public[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scalamacros#quasiquotes_2.10;2.0.0-M7[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: org.scalamacros#quasiquotes_2.10;2.0.0-M7[0m
+[0m[[0mdebug[0m] [0m	found org.scalamacros#quasiquotes_2.10;2.0.0-M7 in sbt-chain[0m
 [0m[[0mdebug[0m] [0m== resolving dependencies org.specs2#specs2_2.10;2.3.13->org.scalamacros#quasiquotes_2.10;2.0.0-M7 [compile->compile(*)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies org.scalamacros#quasiquotes_2.10;2.0.0-M7->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies org.scalamacros#quasiquotes_2.10;2.0.0-M7->org.scala-lang#scala-library;2.10.4 [compile->master(*)][0m
@@ -661,19 +641,9 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies org.specs2#specs2_2.10;2.3.13->org.scalaz#scalaz-core_2.10;7.0.6 [compile->master(*)][0m
 [0m[[0minfo[0m] [0mResolving org.scalaz#scalaz-core_2.10;7.0.6 ...[0m
 [0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scalaz#scalaz-core_2.10;7.0.6 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
-[0m[[0mdebug[0m] [0m		tried /Users/marchaubenstock/.ivy2/local/org.scalaz/scalaz-core_2.10/7.0.6/ivys/ivy.xml[0m
-[0m[[0mdebug[0m] [0m	local: no ivy file found for org.scalaz#scalaz-core_2.10;7.0.6[0m
-[0m[[0mdebug[0m] [0m		tried http://repo1.maven.org/maven2/org/scalaz/scalaz-core_2.10/7.0.6/scalaz-core_2.10-7.0.6.pom[0m
-[0m[[0mdebug[0m] [0m	public: found md file for org.scalaz#scalaz-core_2.10;7.0.6[0m
-[0m[[0mdebug[0m] [0m		=> http://repo1.maven.org/maven2/org/scalaz/scalaz-core_2.10/7.0.6/scalaz-core_2.10-7.0.6.pom (7.0.6)[0m
-[0m[[0mdebug[0m] [0mdownloading http://repo1.maven.org/maven2/org/scalaz/scalaz-core_2.10/7.0.6/scalaz-core_2.10-7.0.6.pom ...[0m
-[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/scalaz/scalaz-core_2.10/7.0.6/scalaz-core_2.10-7.0.6.pom[0m
-[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/scalaz/scalaz-core_2.10/7.0.6/scalaz-core_2.10-7.0.6.pom.sha1[0m
-[0m[[0mdebug[0m] [0msha1 OK for http://repo1.maven.org/maven2/org/scalaz/scalaz-core_2.10/7.0.6/scalaz-core_2.10-7.0.6.pom[0m
-[0m[[0mdebug[0m] [0m	[SUCCESSFUL ] org.scalaz#scalaz-core_2.10;7.0.6!scalaz-core_2.10.pom(pom.original) (408ms)[0m
-[0m[[0mdebug[0m] [0m		tried /Users/marchaubenstock/.ivy2/local/org.scalaz/scalaz-core_2.10/7.0.6/bundles/scalaz-core_2.10.jar[0m
-[0m[[0mdebug[0m] [0m		tried http://repo1.maven.org/maven2/org/scalaz/scalaz-core_2.10/7.0.6/scalaz-core_2.10-7.0.6.jar[0m
-[0m[[0mdebug[0m] [0m	found org.scalaz#scalaz-core_2.10;7.0.6 in public[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scalaz#scalaz-core_2.10;7.0.6[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: org.scalaz#scalaz-core_2.10;7.0.6[0m
+[0m[[0mdebug[0m] [0m	found org.scalaz#scalaz-core_2.10;7.0.6 in sbt-chain[0m
 [0m[[0mdebug[0m] [0m== resolving dependencies org.specs2#specs2_2.10;2.3.13->org.scalaz#scalaz-core_2.10;7.0.6 [compile->compile(*)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.6->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.6->org.scala-lang#scala-library;2.10.4 [compile->master(*)][0m
@@ -687,19 +657,9 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies org.specs2#specs2_2.10;2.3.13->org.scalaz#scalaz-concurrent_2.10;7.0.6 [compile->master(*)][0m
 [0m[[0minfo[0m] [0mResolving org.scalaz#scalaz-concurrent_2.10;7.0.6 ...[0m
 [0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scalaz#scalaz-concurrent_2.10;7.0.6 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
-[0m[[0mdebug[0m] [0m		tried /Users/marchaubenstock/.ivy2/local/org.scalaz/scalaz-concurrent_2.10/7.0.6/ivys/ivy.xml[0m
-[0m[[0mdebug[0m] [0m	local: no ivy file found for org.scalaz#scalaz-concurrent_2.10;7.0.6[0m
-[0m[[0mdebug[0m] [0m		tried http://repo1.maven.org/maven2/org/scalaz/scalaz-concurrent_2.10/7.0.6/scalaz-concurrent_2.10-7.0.6.pom[0m
-[0m[[0mdebug[0m] [0m	public: found md file for org.scalaz#scalaz-concurrent_2.10;7.0.6[0m
-[0m[[0mdebug[0m] [0m		=> http://repo1.maven.org/maven2/org/scalaz/scalaz-concurrent_2.10/7.0.6/scalaz-concurrent_2.10-7.0.6.pom (7.0.6)[0m
-[0m[[0mdebug[0m] [0mdownloading http://repo1.maven.org/maven2/org/scalaz/scalaz-concurrent_2.10/7.0.6/scalaz-concurrent_2.10-7.0.6.pom ...[0m
-[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/scalaz/scalaz-concurrent_2.10/7.0.6/scalaz-concurrent_2.10-7.0.6.pom[0m
-[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/scalaz/scalaz-concurrent_2.10/7.0.6/scalaz-concurrent_2.10-7.0.6.pom.sha1[0m
-[0m[[0mdebug[0m] [0msha1 OK for http://repo1.maven.org/maven2/org/scalaz/scalaz-concurrent_2.10/7.0.6/scalaz-concurrent_2.10-7.0.6.pom[0m
-[0m[[0mdebug[0m] [0m	[SUCCESSFUL ] org.scalaz#scalaz-concurrent_2.10;7.0.6!scalaz-concurrent_2.10.pom(pom.original) (408ms)[0m
-[0m[[0mdebug[0m] [0m		tried /Users/marchaubenstock/.ivy2/local/org.scalaz/scalaz-concurrent_2.10/7.0.6/bundles/scalaz-concurrent_2.10.jar[0m
-[0m[[0mdebug[0m] [0m		tried http://repo1.maven.org/maven2/org/scalaz/scalaz-concurrent_2.10/7.0.6/scalaz-concurrent_2.10-7.0.6.jar[0m
-[0m[[0mdebug[0m] [0m	found org.scalaz#scalaz-concurrent_2.10;7.0.6 in public[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scalaz#scalaz-concurrent_2.10;7.0.6[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: org.scalaz#scalaz-concurrent_2.10;7.0.6[0m
+[0m[[0mdebug[0m] [0m	found org.scalaz#scalaz-concurrent_2.10;7.0.6 in sbt-chain[0m
 [0m[[0mdebug[0m] [0m== resolving dependencies org.specs2#specs2_2.10;2.3.13->org.scalaz#scalaz-concurrent_2.10;7.0.6 [compile->compile(*)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-concurrent_2.10;7.0.6->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-concurrent_2.10;7.0.6->org.scala-lang#scala-library;2.10.4 [compile->master(*)][0m
@@ -710,19 +670,9 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-concurrent_2.10;7.0.6->org.scalaz#scalaz-effect_2.10;7.0.6 [compile->master(*)][0m
 [0m[[0minfo[0m] [0mResolving org.scalaz#scalaz-effect_2.10;7.0.6 ...[0m
 [0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scalaz#scalaz-effect_2.10;7.0.6 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
-[0m[[0mdebug[0m] [0m		tried /Users/marchaubenstock/.ivy2/local/org.scalaz/scalaz-effect_2.10/7.0.6/ivys/ivy.xml[0m
-[0m[[0mdebug[0m] [0m	local: no ivy file found for org.scalaz#scalaz-effect_2.10;7.0.6[0m
-[0m[[0mdebug[0m] [0m		tried http://repo1.maven.org/maven2/org/scalaz/scalaz-effect_2.10/7.0.6/scalaz-effect_2.10-7.0.6.pom[0m
-[0m[[0mdebug[0m] [0m	public: found md file for org.scalaz#scalaz-effect_2.10;7.0.6[0m
-[0m[[0mdebug[0m] [0m		=> http://repo1.maven.org/maven2/org/scalaz/scalaz-effect_2.10/7.0.6/scalaz-effect_2.10-7.0.6.pom (7.0.6)[0m
-[0m[[0mdebug[0m] [0mdownloading http://repo1.maven.org/maven2/org/scalaz/scalaz-effect_2.10/7.0.6/scalaz-effect_2.10-7.0.6.pom ...[0m
-[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/scalaz/scalaz-effect_2.10/7.0.6/scalaz-effect_2.10-7.0.6.pom[0m
-[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/scalaz/scalaz-effect_2.10/7.0.6/scalaz-effect_2.10-7.0.6.pom.sha1[0m
-[0m[[0mdebug[0m] [0msha1 OK for http://repo1.maven.org/maven2/org/scalaz/scalaz-effect_2.10/7.0.6/scalaz-effect_2.10-7.0.6.pom[0m
-[0m[[0mdebug[0m] [0m	[SUCCESSFUL ] org.scalaz#scalaz-effect_2.10;7.0.6!scalaz-effect_2.10.pom(pom.original) (397ms)[0m
-[0m[[0mdebug[0m] [0m		tried /Users/marchaubenstock/.ivy2/local/org.scalaz/scalaz-effect_2.10/7.0.6/bundles/scalaz-effect_2.10.jar[0m
-[0m[[0mdebug[0m] [0m		tried http://repo1.maven.org/maven2/org/scalaz/scalaz-effect_2.10/7.0.6/scalaz-effect_2.10-7.0.6.jar[0m
-[0m[[0mdebug[0m] [0m	found org.scalaz#scalaz-effect_2.10;7.0.6 in public[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scalaz#scalaz-effect_2.10;7.0.6[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: org.scalaz#scalaz-effect_2.10;7.0.6[0m
+[0m[[0mdebug[0m] [0m	found org.scalaz#scalaz-effect_2.10;7.0.6 in sbt-chain[0m
 [0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-concurrent_2.10;7.0.6->org.scalaz#scalaz-effect_2.10;7.0.6 [compile->compile(*)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-effect_2.10;7.0.6->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-effect_2.10;7.0.6->org.scala-lang#scala-library;2.10.4 [compile->master(*)][0m
@@ -3135,12 +3085,7 @@
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] com.typesafe.play#play-json_2.10;2.4.0-M1!play-json_2.10.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scalamock#scalamock-scalatest-support_2.10;3.1.4!scalamock-scalatest-support_2.10.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] junit#junit;4.11!junit.jar[0m
-[0m[[0mdebug[0m] [0m		tried http://repo1.maven.org/maven2/org/specs2/specs2_2.10/2.3.13/specs2_2.10-2.3.13.jar[0m
-[0m[[0minfo[0m] [0mdownloading http://repo1.maven.org/maven2/org/specs2/specs2_2.10/2.3.13/specs2_2.10-2.3.13.jar ...[0m
-[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/specs2/specs2_2.10/2.3.13/specs2_2.10-2.3.13.jar[0m
-[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/specs2/specs2_2.10/2.3.13/specs2_2.10-2.3.13.jar.sha1[0m
-[0m[[0mdebug[0m] [0msha1 OK for http://repo1.maven.org/maven2/org/specs2/specs2_2.10/2.3.13/specs2_2.10-2.3.13.jar[0m
-[0m[[0minfo[0m] [0m	[SUCCESSFUL ] org.specs2#specs2_2.10;2.3.13!specs2_2.10.jar (3388ms)[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.specs2#specs2_2.10;2.3.13!specs2_2.10.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#scala-library;2.10.4!scala-library.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] io.netty#netty;3.9.1.1.Final!netty.jar(bundle)[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] com.twitter#util-app_2.10;6.19.0!util-app_2.10.jar[0m
@@ -3172,25 +3117,10 @@
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scalamock#scalamock-core_2.10;3.1.4!scalamock-core_2.10.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.hamcrest#hamcrest-core;1.3!hamcrest-core.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#scala-compiler;2.10.4!scala-compiler.jar[0m
-[0m[[0mdebug[0m] [0m		tried http://repo1.maven.org/maven2/org/scalamacros/quasiquotes_2.10/2.0.0-M7/quasiquotes_2.10-2.0.0-M7.jar[0m
-[0m[[0minfo[0m] [0mdownloading http://repo1.maven.org/maven2/org/scalamacros/quasiquotes_2.10/2.0.0-M7/quasiquotes_2.10-2.0.0-M7.jar ...[0m
-[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/scalamacros/quasiquotes_2.10/2.0.0-M7/quasiquotes_2.10-2.0.0-M7.jar[0m
-[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/scalamacros/quasiquotes_2.10/2.0.0-M7/quasiquotes_2.10-2.0.0-M7.jar.sha1[0m
-[0m[[0mdebug[0m] [0msha1 OK for http://repo1.maven.org/maven2/org/scalamacros/quasiquotes_2.10/2.0.0-M7/quasiquotes_2.10-2.0.0-M7.jar[0m
-[0m[[0minfo[0m] [0m	[SUCCESSFUL ] org.scalamacros#quasiquotes_2.10;2.0.0-M7!quasiquotes_2.10.jar (486ms)[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scalamacros#quasiquotes_2.10;2.0.0-M7!quasiquotes_2.10.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.pegdown#pegdown;1.2.1!pegdown.jar[0m
-[0m[[0mdebug[0m] [0m		tried http://repo1.maven.org/maven2/org/scalaz/scalaz-core_2.10/7.0.6/scalaz-core_2.10-7.0.6.jar[0m
-[0m[[0minfo[0m] [0mdownloading http://repo1.maven.org/maven2/org/scalaz/scalaz-core_2.10/7.0.6/scalaz-core_2.10-7.0.6.jar ...[0m
-[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/scalaz/scalaz-core_2.10/7.0.6/scalaz-core_2.10-7.0.6.jar[0m
-[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/scalaz/scalaz-core_2.10/7.0.6/scalaz-core_2.10-7.0.6.jar.sha1[0m
-[0m[[0mdebug[0m] [0msha1 OK for http://repo1.maven.org/maven2/org/scalaz/scalaz-core_2.10/7.0.6/scalaz-core_2.10-7.0.6.jar[0m
-[0m[[0minfo[0m] [0m	[SUCCESSFUL ] org.scalaz#scalaz-core_2.10;7.0.6!scalaz-core_2.10.jar(bundle) (1699ms)[0m
-[0m[[0mdebug[0m] [0m		tried http://repo1.maven.org/maven2/org/scalaz/scalaz-concurrent_2.10/7.0.6/scalaz-concurrent_2.10-7.0.6.jar[0m
-[0m[[0minfo[0m] [0mdownloading http://repo1.maven.org/maven2/org/scalaz/scalaz-concurrent_2.10/7.0.6/scalaz-concurrent_2.10-7.0.6.jar ...[0m
-[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/scalaz/scalaz-concurrent_2.10/7.0.6/scalaz-concurrent_2.10-7.0.6.jar[0m
-[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/scalaz/scalaz-concurrent_2.10/7.0.6/scalaz-concurrent_2.10-7.0.6.jar.sha1[0m
-[0m[[0mdebug[0m] [0msha1 OK for http://repo1.maven.org/maven2/org/scalaz/scalaz-concurrent_2.10/7.0.6/scalaz-concurrent_2.10-7.0.6.jar[0m
-[0m[[0minfo[0m] [0m	[SUCCESSFUL ] org.scalaz#scalaz-concurrent_2.10;7.0.6!scalaz-concurrent_2.10.jar(bundle) (455ms)[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scalaz#scalaz-core_2.10;7.0.6!scalaz-core_2.10.jar(bundle)[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scalaz#scalaz-concurrent_2.10;7.0.6!scalaz-concurrent_2.10.jar(bundle)[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scalacheck#scalacheck_2.10;1.11.3!scalacheck_2.10.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.mockito#mockito-core;1.9.5!mockito-core.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.specs2#classycle;1.4.3!classycle.jar[0m
@@ -3200,18 +3130,13 @@
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.ow2.asm#asm-tree;4.1!asm-tree.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.ow2.asm#asm-analysis;4.1!asm-analysis.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.ow2.asm#asm-util;4.1!asm-util.jar[0m
-[0m[[0mdebug[0m] [0m		tried http://repo1.maven.org/maven2/org/scalaz/scalaz-effect_2.10/7.0.6/scalaz-effect_2.10-7.0.6.jar[0m
-[0m[[0minfo[0m] [0mdownloading http://repo1.maven.org/maven2/org/scalaz/scalaz-effect_2.10/7.0.6/scalaz-effect_2.10-7.0.6.jar ...[0m
-[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/scalaz/scalaz-effect_2.10/7.0.6/scalaz-effect_2.10-7.0.6.jar[0m
-[0m[[0mdebug[0m] [0m	public: downloading http://repo1.maven.org/maven2/org/scalaz/scalaz-effect_2.10/7.0.6/scalaz-effect_2.10-7.0.6.jar.sha1[0m
-[0m[[0mdebug[0m] [0msha1 OK for http://repo1.maven.org/maven2/org/scalaz/scalaz-effect_2.10/7.0.6/scalaz-effect_2.10-7.0.6.jar[0m
-[0m[[0minfo[0m] [0m	[SUCCESSFUL ] org.scalaz#scalaz-effect_2.10;7.0.6!scalaz-effect_2.10.jar(bundle) (436ms)[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scalaz#scalaz-effect_2.10;7.0.6!scalaz-effect_2.10.jar(bundle)[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-sbt#test-interface;1.0!test-interface.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.objenesis#objenesis;1.0!objenesis.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#scala-compiler;2.10.3!scala-compiler.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#jline;2.10.3!jline.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.fusesource.jansi#jansi;1.4!jansi.jar[0m
-[0m[[0mdebug[0m] [0m:: resolution report :: resolve 5479ms :: artifacts dl 6519ms[0m
+[0m[[0mdebug[0m] [0m:: resolution report :: resolve 1275ms :: artifacts dl 56ms[0m
 [0m[[0mdebug[0m] [0m	report for default#finagle_2.10;1.0 compile produced in /Users/marchaubenstock/workspace/scala/finagle/target/resolution-cache/reports/default-finagle_2.10-compile.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#finagle_2.10;1.0 runtime produced in /Users/marchaubenstock/workspace/scala/finagle/target/resolution-cache/reports/default-finagle_2.10-runtime.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#finagle_2.10;1.0 test produced in /Users/marchaubenstock/workspace/scala/finagle/target/resolution-cache/reports/default-finagle_2.10-test.xml[0m
@@ -3225,5 +3150,5 @@
 [0m[[0mdebug[0m] [0m	report for default#finagle_2.10;1.0 docs produced in /Users/marchaubenstock/workspace/scala/finagle/target/resolution-cache/reports/default-finagle_2.10-docs.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#finagle_2.10;1.0 pom produced in /Users/marchaubenstock/workspace/scala/finagle/target/resolution-cache/reports/default-finagle_2.10-pom.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#finagle_2.10;1.0 scala-tool produced in /Users/marchaubenstock/workspace/scala/finagle/target/resolution-cache/reports/default-finagle_2.10-scala-tool.xml[0m
-[0m[[0mdebug[0m] [0m	resolve done (5479ms resolve - 6519ms download)[0m
+[0m[[0mdebug[0m] [0m	resolve done (1275ms resolve - 56ms download)[0m
 [0m[[0minfo[0m] [0mDone updating.[0m
