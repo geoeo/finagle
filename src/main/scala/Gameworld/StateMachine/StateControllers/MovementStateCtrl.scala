@@ -13,10 +13,9 @@ import play.api.libs.json.JsValue
  */
 class MovementStateCtrl extends FSMController{
 
-  val startingState : FSM = new IdleState
-  var currentState = startingState
+  var mCurrentState: FSM = new IdleState
 
-  def determineControllerFrom(command: JsValue): (JsValue, FSMController) = {
+  def DetermineControllerFrom(command: JsValue): (JsValue, FSMController) = {
     val stateCtrlString = (command \ "stateCtrl").asOpt[String].get
     val playerAction = (command \ "playerAction").asOpt[JsValue].get
 
@@ -30,14 +29,7 @@ class MovementStateCtrl extends FSMController{
 
     }
 
-    (stateCtrl.Apply(playerAction),stateCtrl)
+    (stateCtrl.Apply(playerAction,mCurrentState),stateCtrl)
   }
 
-  def Apply(command : JsValue) = {
-    val(result, newState) = currentState.determineNextStateAndApply(command)
-
-    currentState = newState
-
-    result
-  }
 }

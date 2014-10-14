@@ -1,5 +1,6 @@
 package Gameworld.StateMachine.StateControllers
 
+import Gameworld.StateMachine.JumpingStates.JumpingState
 import Gameworld.StateMachine.Traits.{FSM, FSMController}
 import play.api.libs.json.JsValue
 
@@ -11,11 +12,23 @@ import play.api.libs.json.JsValue
  */
 class JumpStateCtrl extends FSMController{
 
-  def determineControllerFrom(command: JsValue) = ???
+  var mCurrentState: FSM = new JumpingState
 
-  val startingState: FSM = ???
+  def DetermineControllerFrom(command: JsValue) = {
+    val stateCtrlString = (command \ "stateCtrl").asOpt[String].get
+    val playerAction = (command \ "playerAction").asOpt[JsValue].get
 
-  var currentState: FSM = ???
+    val stateCtrl = stateCtrlString match {
 
-  def Apply(command: JsValue): JsValue = ???
+      case "idle" => new MovementStateCtrl()
+
+      case "dying" => new DieStateCtrl()
+
+      case _ => this
+
+    }
+
+    (stateCtrl.Apply(playerAction,mCurrentState),stateCtrl)
+  }
+
 }

@@ -2,7 +2,7 @@ package Gameworld.StateMachine.MovementStates
 
 import Gameworld.StateMachine.AbstractStates.AMovementState
 import Gameworld.StateMachine.Traits.FSM
-import Gameworld.StateMachine.Traits.MovingStates.Dodging
+import Gameworld.StateMachine.Traits.MovingTraits.Dodging
 import Model.ValidTransition
 import play.api.libs.json.{Json, JsValue}
 
@@ -14,5 +14,4 @@ import play.api.libs.json.{Json, JsValue}
  */
 class DodgeState extends Dodging {
 
-  override def apply = Json.obj("ignoreCommand" -> false)
 }

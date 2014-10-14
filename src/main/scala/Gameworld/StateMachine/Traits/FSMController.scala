@@ -10,15 +10,17 @@ import play.api.libs.json.JsValue
  */
 trait FSMController {
 
-//  var transitionGraph: Map[String,FSMController]
+  var mCurrentState : FSM
 
-  val startingState: FSM
+  def DetermineControllerFrom(command : JsValue): (JsValue,FSMController)
 
-  var currentState : FSM
+  def Apply(command : JsValue, currentState : FSM) = {
+    val (result, newState) = currentState.DetermineNextStateAndApply(command)
 
-  def determineControllerFrom(command : JsValue): (JsValue,FSMController)
-  
-  def Apply(command : JsValue): JsValue
+    mCurrentState = newState
+
+    result
+  }
 
 
 }

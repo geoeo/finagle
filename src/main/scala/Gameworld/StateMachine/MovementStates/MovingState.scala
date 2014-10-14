@@ -1,7 +1,7 @@
 package Gameworld.StateMachine.MovementStates
 
 import Gameworld.StateMachine.Traits.FSM
-import Gameworld.StateMachine.Traits.MovingStates.Moving
+import Gameworld.StateMachine.Traits.MovingTraits.Moving
 import Model.{ValidTransition, InvalidRequest}
 import play.api.libs.json.{Json, JsValue}
 
@@ -13,5 +13,4 @@ import play.api.libs.json.{Json, JsValue}
  */
 class MovingState extends Moving{
 
-  override def apply = Json.obj("ignoreCommand" -> false)
 }
