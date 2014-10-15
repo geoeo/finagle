@@ -1,5 +1,7 @@
 package Gameworld.StateMachine.StateControllers
 
+import Gameworld.StateMachine.DyingStates.DyingState
+import Gameworld.StateMachine.JumpingStates.JumpingState
 import Gameworld.StateMachine.Traits.{FSMController,FSM}
 import Gameworld.StateMachine.MovementStates.IdleState
 import Model.IgnoreCommand
@@ -19,17 +21,17 @@ class MovementStateCtrl extends FSMController{
     val stateCtrlString = (command \ "stateCtrl").asOpt[String].get
     val playerAction = (command \ "playerAction").asOpt[JsValue].get
 
-    val stateCtrl = stateCtrlString match {
+    val (stateCtrl,newState) = stateCtrlString match {
 
-      case "jumping" => new JumpStateCtrl()
+      case "jumping" => (new JumpStateCtrl() , new JumpingState)
 
-      case "dying" => new DieStateCtrl()
+      case "dying" => (new DieStateCtrl(), new DyingState)
 
-      case _ => this
+      case _ => (this, mCurrentState)
 
     }
 
-    (stateCtrl.Apply(playerAction,mCurrentState),stateCtrl)
+    (stateCtrl.Apply(playerAction,newState),stateCtrl)
   }
 
 }

@@ -1,6 +1,6 @@
 package StateControllersTests
 
-import Gameworld.StateMachine.MovementStates.{DodgeState, IdleState}
+import Gameworld.StateMachine.MovementStates.{MovingState, DodgeState, IdleState}
 import Gameworld.StateMachine.StateControllers.{DieStateCtrl, JumpStateCtrl, MovementStateCtrl}
 import CtrlCommands.JumpCommand
 import Model.ValidTransition
@@ -46,6 +46,16 @@ class MovementStateCtrlSpec extends Specification with MockFactory {
       val action = (DodgeCommand.retrieve \ "playerAction").asOpt[JsValue].get
 
       (idleState.DetermineNextStateAndApply _).expects(action).returning(ValidTransition.retrieve,dodgeState)
+
+      ctrl.Apply(action,idleState)
+    }
+
+    "switch state on moving" in new withMovementStateCtrl {
+      val idleState = mock[IdleState]
+      val moveState = mock[MovingState]
+      val action = (MoveCommand.retrieve \ "playerAction").asOpt[JsValue].get
+
+      (idleState.DetermineNextStateAndApply _).expects(action).returning(ValidTransition.retrieve,moveState)
 
       ctrl.Apply(action,idleState)
     }
