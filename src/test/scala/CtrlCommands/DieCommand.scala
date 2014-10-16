@@ -13,8 +13,8 @@ import play.api.libs.json.{Json, JsValue}
 object DieCommand extends Request{
 
   def retrieve: JsValue = Json.obj(
-    "stateCtrl" -> "jumping",
-    "playerAction" -> Json.obj("action" -> ValidTransition.retrieve)
+    "stateCtrl" -> "dying",
+    "playerAction" -> Json.obj("action" -> "dying")
   )
 
 }
