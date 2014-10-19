@@ -5,7 +5,6 @@ import Gameworld.StateMachine.JumpingStates.JumpingState
 import Gameworld.StateMachine.MovementStates.IdleState
 import Gameworld.StateMachine.StateControllers.AbstractController.AFSMController
 import Gameworld.StateMachine.Traits.FSM
-import play.api.libs.json.JsValue
 
 /**
  * Created with IntelliJ IDEA.

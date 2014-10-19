@@ -1,7 +1,8 @@
 package Gameworld.StateMachine.AbstractStates
 
-import Gameworld.StateMachine.JumpingStates.{LandingState, JumpingState}
+import Gameworld.StateMachine.JumpingStates.{JumpAttackState, LandedState, LandingState, JumpingState}
 import Gameworld.StateMachine.Traits.FSM
+import play.api.libs.json.JsValue
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,10 +12,14 @@ import Gameworld.StateMachine.Traits.FSM
  */
 abstract class AJumpingState extends FSM{
 
-  def transitionGraph = Map("jumping" -> (validTransition,landingState),
-                            "landing" -> (ignoreCommand,landingState))
+  def transitionGraph: Map[String, (JsValue, FSM)] = Map("jumping" -> (validTransition,landingState),
+                                                         "jumpAttack" -> (validTransition,landedState),
+                                                         "landing" -> (validTransition,landedState),
+                                                         "landed" -> (ignoreCommand,landedState))
 
   def jumpingState = new JumpingState()
   def landingState = new LandingState()
+  def landedState = new LandedState()
+  def jumpAttackState = new JumpAttackState()
 
 }

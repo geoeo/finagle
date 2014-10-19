@@ -1,7 +1,7 @@
-package CtrlCommands
+package CtrlCommands.MovementCommands
 
 import Model.Traits.Request
-import play.api.libs.json.{Json, JsValue}
+import play.api.libs.json.{JsValue, Json}
 
 /**
  * Created with IntelliJ IDEA.
