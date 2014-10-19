@@ -1,8 +1,8 @@
 package Gameworld.StateMachine.StateControllers
 
 import Gameworld.StateMachine.DyingStates.DyingState
-import Gameworld.StateMachine.Traits.{FSM, FSMController}
-import play.api.libs.json.JsValue
+import Gameworld.StateMachine.StateControllers.AbstractController.AFSMController
+import Gameworld.StateMachine.Traits.FSM
 
 /**
  * Created with IntelliJ IDEA.
@@ -10,25 +10,14 @@ import play.api.libs.json.JsValue
  * Date: 07/10/2014
  * Time: 19:04
  */
-class DieStateCtrl extends FSMController{
+class DieStateCtrl extends AFSMController{
 
   var mCurrentState: FSM = new DyingState()
 
-  override def DetermineControllerFrom(command: JsValue) = {
-    val stateCtrlString = (command \ "stateCtrl").asOpt[String].get
-    val playerAction = (command \ "playerAction").asOpt[JsValue].get
+  override def matchStateCtrlString(stateCtrl :  String) = stateCtrl match {
 
-    val stateCtrl = stateCtrlString match {
+    case _ => (this,mCurrentState)
 
-      case "moving" => new MovementStateCtrl()
-
-      case "dying" => new DieStateCtrl()
-
-      case _ => this
-
-    }
-
-    (stateCtrl.Apply(playerAction,mCurrentState),stateCtrl)
   }
 
 }

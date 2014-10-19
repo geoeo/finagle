@@ -22,5 +22,7 @@ trait FSMController {
     result
   }
 
+  def matchStateCtrlString(stateCtrl :  String): (FSMController, FSM)
+
 
 }
