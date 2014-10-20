@@ -1,5 +1,6 @@
 package Gameworld.StateMachine.AbstractStates
 
+import Gameworld.StateMachine.Actions
 import Gameworld.StateMachine.MovementStates.{MovingState, DodgeState, IdleState}
 import Gameworld.StateMachine.Traits.FSM
 import Model.{ValidTransition, IgnoreCommand}
@@ -13,9 +14,9 @@ import play.api.libs.json.{Json, JsValue}
  */
 abstract class AMovementState extends FSM{
 
-  def transitionGraph:Map[String,(JsValue,FSM)] = Map("idle" -> (validTransition, idleState),
-                            "moving" -> (validTransition,movingState),
-                            "dodging" -> (ignoreCommand,idleState))
+  def transitionGraph:Map[String,(JsValue,FSM)] = Map(Actions.Idle -> (validTransition, idleState),
+                            Actions.Moving -> (validTransition,movingState),
+                            Actions.Dodging -> (ignoreCommand,idleState))
 
   def idleState = new IdleState()
   def movingState = new MovingState()

@@ -1,5 +1,7 @@
 package CtrlCommands.JumpCommands
 
+import Gameworld.StateExchangeKeys
+import Gameworld.StateMachine.Actions
 import Model.Traits.Request
 import play.api.libs.json.{JsValue, Json}
 
@@ -11,7 +13,7 @@ import play.api.libs.json.{JsValue, Json}
  */
 object JumpCommand extends Request {
   def retrieve: JsValue = Json.obj(
-    "stateCtrl" -> "jumping",
-    "playerAction" -> Json.obj("action" -> "jumping")
+    StateExchangeKeys.StateCtrl -> "jumping",
+    StateExchangeKeys.PlayerAction -> Json.obj(StateExchangeKeys.Action -> Actions.Jumping)
   )
 }

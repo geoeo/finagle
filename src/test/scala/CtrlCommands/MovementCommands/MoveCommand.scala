@@ -1,5 +1,7 @@
 package CtrlCommands.MovementCommands
 
+import Gameworld.StateExchangeKeys
+import Gameworld.StateMachine.Actions
 import Model.Traits.Request
 import play.api.libs.json.{JsValue, Json}
 
@@ -11,8 +13,8 @@ import play.api.libs.json.{JsValue, Json}
  */
 object MoveCommand extends Request {
   def retrieve: JsValue = Json.obj(
-    "stateCtrl" -> "moving",
-    "playerAction" -> Json.obj("action" -> "moving")
+    StateExchangeKeys.StateCtrl -> "moving",
+    StateExchangeKeys.PlayerAction -> Json.obj(StateExchangeKeys.Action -> Actions.Moving)
   )
 
 }

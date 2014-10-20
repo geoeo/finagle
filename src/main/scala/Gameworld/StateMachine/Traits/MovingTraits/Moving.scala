@@ -1,6 +1,7 @@
 package Gameworld.StateMachine.Traits.MovingTraits
 
 import Gameworld.StateMachine.AbstractStates.AMovementState
+import Gameworld.StateMachine.Actions
 import Model.ValidTransition
 
 /**
@@ -12,8 +13,8 @@ import Model.ValidTransition
 trait Moving extends AMovementState {
 
 
-  abstract override def transitionGraph = super.transitionGraph.updated("idle",(validTransition,idleState))
-    .updated("dodging", (validTransition,dodgeState)).updated("moving",(validTransition,this))
+  abstract override def transitionGraph = super.transitionGraph.updated(Actions.Idle,(validTransition,idleState))
+    .updated(Actions.Dodging, (validTransition,dodgeState)).updated(Actions.Moving,(validTransition,this))
 
 
 

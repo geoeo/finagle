@@ -1,5 +1,6 @@
 package Gameworld.StateMachine.AbstractStates
 
+import Gameworld.StateMachine.Actions
 import Gameworld.StateMachine.DyingStates.{DyingState, DeadState}
 import Gameworld.StateMachine.Traits.FSM
 import play.api.libs.json.JsValue
@@ -14,8 +15,8 @@ class ADyingState extends FSM{
   /**
    * transitionGraph : Action -> Next State
    */
-  def transitionGraph: Map[String, (JsValue, FSM)] = Map("dying" -> (ignoreCommand,deadState),
-                                                         "dead" -> (validTransition,deadState))
+  def transitionGraph: Map[String, (JsValue, FSM)] = Map(Actions.Dying -> (ignoreCommand,dyingState),
+                                                         Actions.Dead -> (validTransition,deadState))
 
   def dyingState = new DyingState()
   def deadState = new DeadState()

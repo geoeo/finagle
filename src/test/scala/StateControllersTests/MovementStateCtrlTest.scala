@@ -1,17 +1,16 @@
 package StateControllersTests
 
-import CtrlCommands.DieCommands.DieCommand
+import CtrlCommands.DieCommands.DyingCommand
 import CtrlCommands.JumpCommands.JumpCommand
-import CtrlCommands.MovementCommands.{IdleCommand, DodgeCommand, MoveCommand}
-import Gameworld.StateMachine.MovementStates.{MovingState, DodgeState, IdleState}
+import CtrlCommands.MovementCommands.{DodgeCommand, IdleCommand, MoveCommand}
+import Gameworld.StateMachine.MovementStates.{DodgeState, IdleState, MovingState}
 import Gameworld.StateMachine.StateControllers.{DieStateCtrl, JumpStateCtrl, MovementStateCtrl}
 import Model.{InvalidTransition, ValidTransition}
 import org.junit.runner.RunWith
-
+import org.scalamock.specs2.MockFactory
 import org.specs2.mutable._
 import org.specs2.runner.JUnitRunner
 import org.specs2.specification.Scope
-import org.scalamock.specs2.MockFactory
 import play.api.libs.json.JsValue
 
 /**
@@ -38,7 +37,7 @@ class MovementStateCtrlSpec extends Specification with MockFactory {
     }
 
     "return DieStateCtrl" in new withMovementStateCtrl {
-      ctrl.DetermineControllerFrom(DieCommand.retrieve)._2 must beAnInstanceOf[DieStateCtrl]
+      ctrl.DetermineControllerFrom(DyingCommand.retrieve)._2 must beAnInstanceOf[DieStateCtrl]
     }
 
 
@@ -140,6 +139,23 @@ class MovementStateCtrlSpec extends Specification with MockFactory {
       ctrl.Apply(action,idleState)
       ctrl.Apply(action2,moveState)
       ctrl.Apply(action3,dodgeState)
+
+    }
+
+    "idle to dodge is valid; dodge to move is not" in new withMovementStateCtrl {
+
+      val idleState = mock[IdleState]
+      val moveState = mock[MovingState]
+      val dodgeState = mock[DodgeState]
+
+      val action = (MoveCommand.retrieve \ "playerAction").asOpt[JsValue].get
+      val action2 = (DodgeCommand.retrieve \ "playerAction").asOpt[JsValue].get
+
+      (idleState.DetermineNextStateAndApply _).expects(action2).returning(ValidTransition.retrieve,dodgeState)
+      (dodgeState.DetermineNextStateAndApply _).expects(action).returning(InvalidTransition.retrieve,idleState)
+
+      ctrl.Apply(action2,idleState)
+      ctrl.Apply(action,dodgeState)
 
     }
 

@@ -1,5 +1,6 @@
 package Gameworld.StateMachine.Traits
 
+import Gameworld.StateExchangeKeys
 import Model.{ValidTransition, IgnoreCommand}
 import play.api.libs.json.{Json, JsValue}
 
@@ -21,7 +22,7 @@ trait FSM {
   def transitionGraph : Map[String,(JsValue,FSM)]
 
   def DetermineNextStateAndApply(command: JsValue): (JsValue, FSM) = {
-    val action = (command \ "action").asOpt[String].get
+    val action = (command \ StateExchangeKeys.Action).asOpt[String].get
 
     transitionGraph(action)
 
