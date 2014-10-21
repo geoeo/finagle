@@ -1,11 +1,8 @@
 package StateControllersTests
 
 import CtrlCommands.DieCommands.{DeadCommand, DyingCommand}
-import CtrlCommands.JumpCommands.JumpCommand
-import CtrlCommands.MovementCommands.{IdleCommand, DodgeCommand}
 import Gameworld.StateMachine.DyingStates.{DeadState, DyingState}
-import Gameworld.StateMachine.MovementStates.IdleState
-import Gameworld.StateMachine.StateControllers.{JumpStateCtrl, DieStateCtrl, MovementStateCtrl}
+import Gameworld.StateMachine.StateControllers.DieStateCtrl
 import Model.ValidTransition
 import org.junit.runner.RunWith
 import org.scalamock.specs2.MockFactory

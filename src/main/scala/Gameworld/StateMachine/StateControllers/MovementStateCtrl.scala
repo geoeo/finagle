@@ -1,6 +1,6 @@
 package Gameworld.StateMachine.StateControllers
 
-import Gameworld.StateMachine.Actions
+import Gameworld.StateMachine.States
 import Gameworld.StateMachine.DyingStates.DyingState
 import Gameworld.StateMachine.JumpingStates.JumpingState
 import Gameworld.StateMachine.StateControllers.AbstractController.AFSMController
@@ -18,9 +18,9 @@ class MovementStateCtrl extends AFSMController{
 
   override def matchStateCtrlString(stateCtrl :  String) = stateCtrl match {
 
-    case Actions.Jumping => (new JumpStateCtrl() , new JumpingState)
+    case States.Jumping => (new JumpStateCtrl() , new JumpingState)
 
-    case Actions.Dying => (new DieStateCtrl(), new DyingState)
+    case States.Dying => (new DieStateCtrl(), new DyingState)
 
     case _ => (this, mCurrentState)
 
