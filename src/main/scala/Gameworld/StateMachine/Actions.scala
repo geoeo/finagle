@@ -11,6 +11,7 @@ object Actions {
   val Moving = "moving"
   val Idle = "idle"
   val Dodging = "dodging"
+  val Attacking = "attacking"
 
   val Jumping = "jumping"
   val Landed = "landed"

@@ -2,9 +2,9 @@ package StateControllersTests
 
 import CtrlCommands.DieCommands.DyingCommand
 import CtrlCommands.JumpCommands.JumpCommand
-import CtrlCommands.MovementCommands.{DodgeCommand, IdleCommand, MoveCommand}
-import Gameworld.StateMachine.MovementStates.{DodgeState, IdleState, MovingState}
-import Gameworld.StateMachine.StateControllers.{DieStateCtrl, JumpStateCtrl, MovementStateCtrl}
+import CtrlCommands.MovementCommands._
+import Gameworld.StateMachine.MovementStates._
+import Gameworld.StateMachine.StateControllers._
 import Model.{InvalidTransition, ValidTransition}
 import org.junit.runner.RunWith
 import org.scalamock.specs2.MockFactory
@@ -75,6 +75,15 @@ class MovementStateCtrlSpec extends Specification with MockFactory {
 
       ctrl.Apply(action,idleState)
     }
+    "switch state on attacking" in new withMovementStateCtrl {
+      val idleState = mock[IdleState]
+      val attackingState = mock[AttackingState]
+      val action = (MoveCommand.retrieve \ "playerAction").asOpt[JsValue].get
+
+      (idleState.DetermineNextStateAndApply _).expects(action).returning(ValidTransition.retrieve,attackingState)
+
+      ctrl.Apply(action,idleState)
+    }
 
     "idle to move to dodge is a valid chain" in new withMovementStateCtrl {
 
@@ -90,6 +99,68 @@ class MovementStateCtrlSpec extends Specification with MockFactory {
 
       ctrl.Apply(action,idleState)
       ctrl.Apply(action2,moveState)
+
+    }
+
+    "idle to attack is valid" in new withMovementStateCtrl {
+
+      val idleState = mock[IdleState]
+      val attackingState = mock[AttackingState]
+
+      val action = (AttackingCommand.retrieve \ "playerAction").asOpt[JsValue].get
+
+      (idleState.DetermineNextStateAndApply _).expects(action).returning(ValidTransition.retrieve,attackingState)
+
+      ctrl.Apply(action,idleState)
+
+    }
+
+    "idle to attack recurring is valid" in new withMovementStateCtrl {
+
+      val idleState = mock[IdleState]
+      val attackingState = mock[AttackingState]
+
+      val action = (AttackingCommand.retrieve \ "playerAction").asOpt[JsValue].get
+
+      (idleState.DetermineNextStateAndApply _).expects(action).returning(ValidTransition.retrieve,attackingState)
+      (attackingState.DetermineNextStateAndApply _).expects(action).returning(ValidTransition.retrieve,attackingState)
+
+      ctrl.Apply(action,idleState)
+      ctrl.Apply(action,attackingState)
+
+    }
+
+    "idle to move to attack is valid" in new withMovementStateCtrl {
+
+      val idleState = mock[IdleState]
+      val movingState = mock[MovingState]
+      val attackingState = mock[AttackingState]
+
+      val action = (AttackingCommand.retrieve \ "playerAction").asOpt[JsValue].get
+      val action2 = (MoveCommand.retrieve \ "playerAction").asOpt[JsValue].get
+
+      (idleState.DetermineNextStateAndApply _).expects(action2).returning(ValidTransition.retrieve,movingState)
+      (movingState.DetermineNextStateAndApply _).expects(action).returning(ValidTransition.retrieve,attackingState)
+
+      ctrl.Apply(action2,idleState)
+      ctrl.Apply(action,movingState)
+
+    }
+
+    "idle to dodge is valid, dodge to attack is invalid" in new withMovementStateCtrl {
+
+      val idleState = mock[IdleState]
+      val dodgingState = mock[MovingState]
+      val attackingState = mock[AttackingState]
+
+      val action = (AttackingCommand.retrieve \ "playerAction").asOpt[JsValue].get
+      val action2 = (DodgeCommand.retrieve \ "playerAction").asOpt[JsValue].get
+
+      (idleState.DetermineNextStateAndApply _).expects(action2).returning(ValidTransition.retrieve,dodgingState)
+      (dodgingState.DetermineNextStateAndApply _).expects(action).returning(InvalidTransition.retrieve,idleState)
+
+      ctrl.Apply(action2,idleState)
+      ctrl.Apply(action,dodgingState)
 
     }
 
@@ -118,6 +189,19 @@ class MovementStateCtrlSpec extends Specification with MockFactory {
       (idleState.DetermineNextStateAndApply _).expects(action).returning(InvalidTransition.retrieve,idleState)
 
       ctrl.Apply(action,idleState)
+
+    }
+
+    "attack to dodge is a valid transition" in new withMovementStateCtrl {
+
+      val idleState = mock[IdleState]
+      val attackingState = mock[AttackingState]
+
+      val action = (DodgeCommand.retrieve \ "playerAction").asOpt[JsValue].get
+
+      (attackingState.DetermineNextStateAndApply _).expects(action).returning(InvalidTransition.retrieve,idleState)
+
+      ctrl.Apply(action,attackingState)
 
     }
 

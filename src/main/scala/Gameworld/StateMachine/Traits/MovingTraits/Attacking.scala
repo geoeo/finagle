@@ -2,19 +2,18 @@ package Gameworld.StateMachine.Traits.MovingTraits
 
 import Gameworld.StateMachine.AbstractStates.AMovementState
 import Gameworld.StateMachine.Actions
-import Model.ValidTransition
 
 /**
  * Created with IntelliJ IDEA.
  * User: marchaubenstock
- * Date: 08/10/2014
- * Time: 23:13
+ * Date: 22/10/14
+ * Time: 22:35
  */
-trait Dodging extends AMovementState{
+trait Attacking extends AMovementState{
 
   abstract override def transitionGraph = super.transitionGraph.updated(Actions.Dodging, (ignoreCommand,idleState))
                                                                .updated(Actions.Moving,(ignoreCommand,idleState))
-                                                               .updated(Actions.Attacking,(ignoreCommand,idleState))
+                                                               .updated(Actions.Attacking,(validTransition,this))
 
 
 }
