@@ -3,6 +3,7 @@ package Gameworld.StateMachine.AbstractStates
 import Gameworld.StateMachine.Actions
 import Gameworld.StateMachine.MovementStates._
 import Gameworld.StateMachine.Traits.FSM
+import Gameworld.StateMachine.Traits.MovingTraits.ComboAttack
 import play.api.libs.json.JsValue
 
 /**
@@ -22,6 +23,8 @@ abstract class AMovementState extends FSM{
   def movingState = new MovingState()
   def dodgeState = new DodgeState()
   def attackingState = new AttackingState()
+  def comboAttackState = new ComboAttackState()
+  def endOfComboState = new EndOfComboState()
 
 
 }

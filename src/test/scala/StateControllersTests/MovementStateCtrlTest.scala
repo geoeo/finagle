@@ -40,7 +40,6 @@ class MovementStateCtrlSpec extends Specification with MockFactory {
       ctrl.DetermineControllerFrom(DyingCommand.retrieve)._2 must beAnInstanceOf[DieStateCtrl]
     }
 
-
     "return MoveStateCtrl on dodge" in new withMovementStateCtrl {
       ctrl.DetermineControllerFrom(DodgeCommand.retrieve)._2 must beAnInstanceOf[MovementStateCtrl]
     }
@@ -192,7 +191,7 @@ class MovementStateCtrlSpec extends Specification with MockFactory {
 
     }
 
-    "attack to dodge is a valid transition" in new withMovementStateCtrl {
+    "attack to dodge is an invalid transition" in new withMovementStateCtrl {
 
       val idleState = mock[IdleState]
       val attackingState = mock[AttackingState]
@@ -205,6 +204,84 @@ class MovementStateCtrlSpec extends Specification with MockFactory {
 
     }
 
+    "attack to combo is valid" in new withMovementStateCtrl {
+
+      val attackingState = mock[AttackingState]
+      val comboState = mock[ComboAttackState]
+
+      val comboAttack = (AttackingCommand.retrieve \ "playerAction").asOpt[JsValue].get
+
+      (attackingState.DetermineNextStateAndApply _).expects(comboAttack).returning(ValidTransition.retrieve,comboState)
+
+      ctrl.Apply(comboAttack,attackingState)
+
+    }
+
+
+    "combo to endOfCombo is valid" in new withMovementStateCtrl {
+
+      val endOfCombo = mock[EndOfComboState]
+      val comboState = mock[ComboAttackState]
+
+      val comboAttack = (AttackingCommand.retrieve \ "playerAction").asOpt[JsValue].get
+
+      (comboState.DetermineNextStateAndApply _).expects(comboAttack).returning(ValidTransition.retrieve,endOfCombo)
+
+      ctrl.Apply(comboAttack,comboState)
+
+    }
+
+    "endOfCombo to idle is valid" in new withMovementStateCtrl {
+
+      val endOfCombo = mock[EndOfComboState]
+      val idleState = mock[IdleState]
+
+      val idleCommand = (IdleCommand.retrieve \ "playerAction").asOpt[JsValue].get
+
+      (endOfCombo.DetermineNextStateAndApply _).expects(idleCommand).returning(ValidTransition.retrieve,idleState)
+
+      ctrl.Apply(idleCommand,endOfCombo)
+
+    }
+
+    "endOfCombo to move is invalid" in new withMovementStateCtrl {
+
+      val endOfCombo = mock[EndOfComboState]
+      val idleState = mock[IdleState]
+
+      val moveCommand = (MoveCommand.retrieve \ "playerAction").asOpt[JsValue].get
+
+      (endOfCombo.DetermineNextStateAndApply _).expects(moveCommand).returning(InvalidTransition.retrieve,idleState)
+
+      ctrl.Apply(moveCommand,endOfCombo)
+
+    }
+
+    "endOfCombo to move is invalid" in new withMovementStateCtrl {
+
+      val endOfCombo = mock[EndOfComboState]
+      val idleState = mock[IdleState]
+
+      val moveCommand = (MoveCommand.retrieve \ "playerAction").asOpt[JsValue].get
+
+      (endOfCombo.DetermineNextStateAndApply _).expects(moveCommand).returning(InvalidTransition.retrieve,idleState)
+
+      ctrl.Apply(moveCommand,endOfCombo)
+
+    }
+
+    "endOfCombo to dodge is invalid" in new withMovementStateCtrl {
+
+      val endOfCombo = mock[EndOfComboState]
+      val idleState = new IdleState()
+
+      val dodgeCommand = (DodgeCommand.retrieve \ "playerAction").asOpt[JsValue].get
+
+      (endOfCombo.DetermineNextStateAndApply _).expects(dodgeCommand).returning(InvalidTransition.retrieve,idleState)
+
+      ctrl.Apply(dodgeCommand,endOfCombo)
+
+    }
 
     "idle to move to dodge to idle is a valid chain" in new withMovementStateCtrl {
 

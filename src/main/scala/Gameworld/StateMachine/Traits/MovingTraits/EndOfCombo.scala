@@ -6,14 +6,13 @@ import Gameworld.StateMachine.Actions
 /**
  * Created with IntelliJ IDEA.
  * User: marchaubenstock
- * Date: 22/10/14
- * Time: 22:35
+ * Date: 23/10/14
+ * Time: 21:21
  */
-trait Attacking extends AMovementState{
+trait EndOfCombo extends AMovementState{
 
   abstract override def transitionGraph = super.transitionGraph.updated(Actions.Dodging, (ignoreCommand,idleState))
-                                                               .updated(Actions.Moving,(ignoreCommand,idleState))
-                                                               .updated(Actions.Attacking,(validTransition,comboAttackState))
-
+    .updated(Actions.Moving,(ignoreCommand,idleState))
+    .updated(Actions.Attacking,(validTransition,idleState))
 
 }
