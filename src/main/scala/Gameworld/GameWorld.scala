@@ -1,3 +1,4 @@
+import Model.Schemas.Request.RequestSchema
 import play.api.libs.json.Json
 
 /**
@@ -8,8 +9,8 @@ import play.api.libs.json.Json
  */
 object GameWorld {
 
-  def Consume(command : String) : String = Json.toJson(
-    Map( "response" -> "hello")
+  def Apply(requestData : RequestSchema) : String = Json.toJson(
+    Map( "echo" -> requestData.data )
   ).toString()
 
 

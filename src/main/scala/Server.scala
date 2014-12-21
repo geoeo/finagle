@@ -4,6 +4,8 @@
  * Date: 30/09/2014
  * Time: 23:25
  */
+
+import Commons.Validator
 import com.twitter.finagle.{Http,Service}
 import com.twitter.util.{Await, Future}
 import com.twitter.finagle.http.Response
@@ -15,11 +17,11 @@ import org.jboss.netty.util.CharsetUtil.UTF_8
 object Server extends App {
   val service = new Service[HttpRequest, HttpResponse] {
     def apply(req: HttpRequest): Future[HttpResponse] = {
-      val commandFromRequest = req.getContent().toString(UTF_8)
+      val requestContents = req.getContent().toString(UTF_8)
       val response = Response()
-      val responseContent =  GameWorld.Consume(commandFromRequest)
+      val responseContent =  GameWorld.Apply(Validator.ValidateRequest(requestContents))
 
-      response.setContentType(MediaType.Html, UTF_8.name)
+      response.setContentType(MediaType.Json, UTF_8.name)
       response.setContent(ChannelBuffers.copiedBuffer(responseContent, UTF_8))
       Future.value(response)
     }
