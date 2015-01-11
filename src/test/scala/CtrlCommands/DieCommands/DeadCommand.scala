@@ -1,7 +1,7 @@
 package CtrlCommands.DieCommands
 
-import Gameworld.StateExchangeKeys
 import Gameworld.StateMachine.Actions
+import Model.StateExchangeKeys
 import Model.Traits.Request
 import play.api.libs.json.{Json, JsValue}
 

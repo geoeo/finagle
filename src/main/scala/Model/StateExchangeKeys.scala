@@ -1,4 +1,4 @@
-package Gameworld
+package Model
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,5 +11,7 @@ object StateExchangeKeys {
   val PlayerAction = "playerAction"
   val Action = "action"
   val StateCtrl = "stateCtrl"
+  val Name = "name"
+  val Data = "data"
 
 }

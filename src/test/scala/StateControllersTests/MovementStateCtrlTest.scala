@@ -3,7 +3,9 @@ package StateControllersTests
 import CtrlCommands.DieCommands.DyingCommand
 import CtrlCommands.JumpCommands.JumpCommand
 import CtrlCommands.MovementCommands._
+import Gameworld.StateMachine.JumpingStates.JumpingState
 import Gameworld.StateMachine.MovementStates._
+import Gameworld.StateMachine.StateControllers.AbstractController.AFSMController
 import Gameworld.StateMachine.StateControllers._
 import Model.{InvalidTransition, ValidTransition}
 import org.junit.runner.RunWith
@@ -33,15 +35,17 @@ class MovementStateCtrlSpec extends Specification with MockFactory {
     }
 
     "return JumpStateCtrl" in new withMovementStateCtrl {
-      ctrl.DetermineControllerFrom(JumpCommand.retrieve)._2 must beAnInstanceOf[JumpStateCtrl]
+      var currentCtrl = ctrl.DetermineControllerFrom(JumpCommand.retrieve)._2
+      currentCtrl must beAnInstanceOf[JumpStateCtrl]
     }
 
     "return DieStateCtrl" in new withMovementStateCtrl {
-      ctrl.DetermineControllerFrom(DyingCommand.retrieve)._2 must beAnInstanceOf[DieStateCtrl]
+      var currentCtrl = ctrl.DetermineControllerFrom(DyingCommand.retrieve)._2
+      currentCtrl must haveClass[DieStateCtrl]
     }
 
     "return MoveStateCtrl on dodge" in new withMovementStateCtrl {
-      ctrl.DetermineControllerFrom(DodgeCommand.retrieve)._2 must beAnInstanceOf[MovementStateCtrl]
+      ctrl.DetermineControllerFrom(DodgeCommand.retrieve)._2 must haveClass[MovementStateCtrl]
     }
 
     "stay in idle on idle" in new withMovementStateCtrl {

@@ -1,0 +1,94 @@
+Starting Server...
+Finagle version 6.20.0 (rev=96be6e38b543fc52595afca784d2c8d5c64f062c) built at 20140806-060316
+Starting Server...
+Finagle version 6.20.0 (rev=96be6e38b543fc52595afca784d2c8d5c64f062c) built at 20140806-060316
+Starting Server...
+Finagle version 6.20.0 (rev=96be6e38b543fc52595afca784d2c8d5c64f062c) built at 20140806-060316
+header: User-Agent, contents: curl/7.37.1
+header: Host, contents: localhost:8080
+header: Accept, contents: */*
+request received with contents 
+header: User-Agent, contents: curl/7.37.1
+header: Host, contents: localhost:8080
+header: Accept, contents: */*
+header: Content-Length, contents: 31
+header: Content-Type, contents: application/x-www-form-urlencoded
+request received with contents {"name":"test","data":"mydata"}
+header: User-Agent, contents: curl/7.37.1
+header: Host, contents: localhost:8080
+header: Accept, contents: */*
+header: Content-Length, contents: 106
+header: Content-Type, contents: application/x-www-form-urlencoded
+request received with contents {"name":"test","data":"mydata","playerAction":{"state":"state","playerAction":"action","action":"action"}}
+header: User-Agent, contents: curl/7.37.1
+header: Host, contents: localhost:8080
+header: Accept, contents: */*
+header: Content-Length, contents: 106
+header: Content-Type, contents: application/x-www-form-urlencoded
+request received with contents {"name":"test","data":"mydata","playerAction":{"state":"state","playerAction":"action","action":"action"}}
+Starting Server...
+Finagle version 6.20.0 (rev=96be6e38b543fc52595afca784d2c8d5c64f062c) built at 20140806-060316
+header: User-Agent, contents: curl/7.37.1
+header: Host, contents: localhost:8080
+header: Accept, contents: */*
+header: Content-Length, contents: 106
+header: Content-Type, contents: application/x-www-form-urlencoded
+request received with contents {"name":"test","data":"mydata","playerAction":{"state":"state","playerAction":"action","action":"action"}}
+header: User-Agent, contents: curl/7.37.1
+header: Host, contents: localhost:8080
+header: Accept, contents: */*
+header: Content-Length, contents: 110
+header: Content-Type, contents: application/x-www-form-urlencoded
+request received with contents {"name":"test","data":"mydata","playerAction":{"stateCtrl":"state","playerAction":"action","action":"action"}}
+Starting Server...
+Finagle version 6.24.0 (rev=1e06db17ca2de4b85209dd2fbc18e635815e994b) built at 20141212-145739
+header: User-Agent, contents: curl/7.37.1
+header: Host, contents: localhost:8080
+header: Accept, contents: */*
+header: Content-Length, contents: 110
+header: Content-Type, contents: application/x-www-form-urlencoded
+request received with contents {"name":"test","data":"mydata","playerAction":{"stateCtrl":"state","playerAction":"action","action":"action"}}
+Starting Server...
+Finagle version 6.24.0 (rev=1e06db17ca2de4b85209dd2fbc18e635815e994b) built at 20141212-145739
+header: User-Agent, contents: curl/7.37.1
+header: Host, contents: localhost:8080
+header: Accept, contents: */*
+header: Content-Length, contents: 110
+header: Content-Type, contents: application/x-www-form-urlencoded
+request received with contents {"name":"test","data":"mydata","playerAction":{"stateCtrl":"state","playerAction":"action","action":"action"}}
+header: User-Agent, contents: curl/7.37.1
+header: Host, contents: localhost:8080
+header: Accept, contents: */*
+header: Content-Length, contents: 112
+header: Content-Type, contents: application/x-www-form-urlencoded
+request received with contents {"name":"test","data":"mydata","playerAction":{"stateCtrl":"state","playerAction":"action","action12":"action"}}
+Starting Server...
+Finagle version 6.24.0 (rev=1e06db17ca2de4b85209dd2fbc18e635815e994b) built at 20141212-145739
+header: User-Agent, contents: curl/7.37.1
+header: Host, contents: localhost:8080
+header: Accept, contents: */*
+header: Content-Length, contents: 112
+header: Content-Type, contents: application/x-www-form-urlencoded
+request received with contents {"name":"test","data":"mydata","playerAction":{"stateCtrl":"state","playerAction":"action","action12":"action"}}
+Starting Server...
+Finagle version 6.24.0 (rev=1e06db17ca2de4b85209dd2fbc18e635815e994b) built at 20141212-145739
+header: User-Agent, contents: curl/7.37.1
+header: Host, contents: localhost:8080
+header: Accept, contents: */*
+header: Content-Length, contents: 112
+header: Content-Type, contents: application/x-www-form-urlencoded
+request received with contents {"name":"test","data":"mydata","playerAction":{"stateCtrl":"state","playerAction":"action","action12":"action"}}
+header: User-Agent, contents: curl/7.37.1
+header: Host, contents: localhost:8080
+header: Accept, contents: */*
+header: Content-Length, contents: 110
+header: Content-Type, contents: application/x-www-form-urlencoded
+request received with contents {"name":"test","data":"mydata","playerAction":{"stateCtrl":"state","playerAction":"action","action":"action"}}
+Starting Server...
+Finagle version 6.24.0 (rev=1e06db17ca2de4b85209dd2fbc18e635815e994b) built at 20141212-145739
+header: User-Agent, contents: curl/7.37.1
+header: Host, contents: localhost:8080
+header: Accept, contents: */*
+header: Content-Length, contents: 110
+header: Content-Type, contents: application/x-www-form-urlencoded
+request received with contents {"name":"test","data":"mydata","playerAction":{"stateCtrl":"state","playerAction":"action","action":"action"}}

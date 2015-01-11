@@ -1,7 +1,7 @@
 package CtrlCommands.MovementCommands
 
-import Gameworld.StateExchangeKeys
 import Gameworld.StateMachine.Actions
+import Model.StateExchangeKeys
 import play.api.libs.json.{Json, JsValue}
 
 /**

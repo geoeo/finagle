@@ -1,7 +1,5 @@
 package Model.Schemas
 
-import play.api.libs.json.{JsPath, Reads, JsValue}
-
 /**
  * Created with IntelliJ IDEA.
  * User: marchaubenstock
@@ -10,11 +8,12 @@ import play.api.libs.json.{JsPath, Reads, JsValue}
  */
 object Request {
 
-  val ResponseToInvalidRequest = new RequestSchema("","Error")
+  val ResponseToInvalidRequest = new RequestSchema("","Error",PlayerAction.emptyAction)
 
   case class RequestSchema(
     name:String,
-    data:String
+    data:String,
+    playerAction:PlayerAction.PlayerActionSchema
   )
 
 

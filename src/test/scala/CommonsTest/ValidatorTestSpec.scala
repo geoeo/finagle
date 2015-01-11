@@ -1,6 +1,7 @@
 package CommonsTest
 
 import Commons.Validator
+import Model.Schemas.PlayerAction
 import Model.Schemas.Request.RequestSchema
 import org.junit.runner.RunWith
 import org.scalamock.specs2.MockFactory
@@ -18,7 +19,7 @@ import org.specs2.specification.Scope
 class ValidatorTestSpec extends Specification with MockFactory {
 
   val inputMissingData : String = """{"name" : "marc"}"""
-  val RequestSchema_Error = new RequestSchema("error", "Error")
+  val RequestSchema_Error = new RequestSchema("error", "Error",PlayerAction.emptyAction)
 
   "Validator" should {
 

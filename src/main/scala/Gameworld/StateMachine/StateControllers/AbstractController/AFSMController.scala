@@ -1,7 +1,7 @@
 package Gameworld.StateMachine.StateControllers.AbstractController
 
-import Gameworld.StateExchangeKeys
 import Gameworld.StateMachine.Traits.FSMController
+import Model.StateExchangeKeys
 import play.api.libs.json.JsValue
 
 /**

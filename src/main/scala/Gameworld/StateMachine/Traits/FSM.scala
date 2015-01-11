@@ -1,7 +1,6 @@
 package Gameworld.StateMachine.Traits
 
-import Gameworld.StateExchangeKeys
-import Model.{ValidTransition, IgnoreCommand}
+import Model.{StateExchangeKeys, ValidTransition, IgnoreCommand}
 import play.api.libs.json.{Json, JsValue}
 
 /**
