@@ -92,3 +92,23 @@ header: Accept, contents: */*
 header: Content-Length, contents: 110
 header: Content-Type, contents: application/x-www-form-urlencoded
 request received with contents {"name":"test","data":"mydata","playerAction":{"stateCtrl":"state","playerAction":"action","action":"action"}}
+Starting Server...
+Finagle version 6.24.0 (rev=1e06db17ca2de4b85209dd2fbc18e635815e994b) built at 20141212-145739
+header: User-Agent, contents: curl/7.37.1
+header: Host, contents: localhost:8080
+header: Accept, contents: */*
+header: Content-Length, contents: 101
+header: Content-Type, contents: application/x-www-form-urlencoded
+request received with contents {"name":"test","data":"mydata","playerData":{"stateCtrl":"state","playerAction":{"action":"action"}}}
+header: User-Agent, contents: curl/7.37.1
+header: Host, contents: localhost:8080
+header: Accept, contents: */*
+header: Content-Length, contents: 102
+header: Content-Type, contents: application/x-www-form-urlencoded
+request received with contents {"name":"test","data":"mydata","playerData":{"stateCtrl":"state","playerAction":{"action2":"action"}}}
+header: User-Agent, contents: curl/7.37.1
+header: Host, contents: localhost:8080
+header: Accept, contents: */*
+header: Content-Length, contents: 101
+header: Content-Type, contents: application/x-www-form-urlencoded
+request received with contents {"name":"test","data":"mydata","playerData":{"stateCtrl":"state","playerAction":{"action":"action"}}}

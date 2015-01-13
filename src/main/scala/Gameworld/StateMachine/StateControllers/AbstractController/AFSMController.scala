@@ -1,6 +1,8 @@
 package Gameworld.StateMachine.StateControllers.AbstractController
 
 import Gameworld.StateMachine.Traits.FSMController
+import Model.Schemas.PlayerAction
+import Model.Schemas.PlayerAction.PlayerActionSchema
 import Model.StateExchangeKeys
 import play.api.libs.json.JsValue
 
@@ -12,9 +14,9 @@ import play.api.libs.json.JsValue
  */
 abstract class AFSMController extends FSMController{
 
-  def DetermineControllerFrom(command: JsValue): (JsValue, FSMController) = {
-    val stateCtrlString = (command \ StateExchangeKeys.StateCtrl).asOpt[String].get
-    val playerAction = (command \ StateExchangeKeys.PlayerAction).asOpt[JsValue].get
+  def DetermineControllerFrom(command: PlayerAction.PlayerActionSchema): (JsValue, FSMController) = {
+    val stateCtrlString = command.stateCtrl
+    val playerAction = command.playerAction
 
     val (stateCtrl,newState) = matchStateCtrlString(stateCtrlString)
 

@@ -9,8 +9,8 @@ import play.api.libs.json.Json
  */
 object GameWorld {
 
-  def Apply(requestData : RequestSchema) : String = Json.toJson(
-    Map( "echo" -> requestData.data )
+  def Apply(validatedRequestData : RequestSchema) : String = Json.toJson(
+    Map( "echo" -> validatedRequestData.data )
   ).toString()
 
 

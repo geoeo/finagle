@@ -19,7 +19,7 @@ import org.specs2.specification.Scope
 class ValidatorTestSpec extends Specification with MockFactory {
 
   val inputMissingData : String = """{"name" : "marc"}"""
-  val RequestSchema_Error = new RequestSchema("error", "Error",PlayerAction.emptyAction)
+  val RequestSchema_Error = new RequestSchema("error", "Error",PlayerAction.emptyPlayerAction)
 
   "Validator" should {
 

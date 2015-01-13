@@ -8,12 +8,12 @@ package Model.Schemas
  */
 object Request {
 
-  val ResponseToInvalidRequest = new RequestSchema("","Error",PlayerAction.emptyAction)
+  val ResponseToInvalidRequest = new RequestSchema("no name","error",PlayerAction.emptyPlayerAction)
 
   case class RequestSchema(
     name:String,
     data:String,
-    playerAction:PlayerAction.PlayerActionSchema
+    playerData:PlayerAction.PlayerActionSchema
   )
 
 

@@ -8,7 +8,7 @@ import Gameworld.StateMachine.StateControllers.{MovementStateCtrl, DieStateCtrl,
 import Gameworld.StateMachine.Traits.FSMController
 import org.jboss.netty.handler.timeout.IdleState
 import org.junit.runner.RunWith
-import org.scalamock.specs2.MockFactory
+import org.scalamock.specs2.MockContext
 import org.specs2.mutable.Specification
 import org.specs2.runner.JUnitRunner
 import org.specs2.specification.Scope
@@ -20,9 +20,9 @@ import org.specs2.specification.Scope
  * Time: 22:29
  */
 @RunWith(classOf[JUnitRunner])
-class JumpStateCtrlSpec extends Specification with MockFactory  {
+class JumpStateCtrlSpec extends Specification {
 
-  trait withJumpStateCtrl extends Scope {
+  trait withJumpStateCtrl extends Scope with MockContext {
     val ctrl = new JumpStateCtrl()
   }
 

@@ -8,12 +8,11 @@ package Model.Schemas
  */
 object PlayerAction {
 
-  def emptyAction = new PlayerActionSchema("no state","no playerAction","no action")
+  def emptyPlayerAction = new PlayerActionSchema("no state",Action.emptyAction)
   
   case class PlayerActionSchema(
     stateCtrl : String,
-    playerAction: String,
-    action : String
+    playerAction: Action.ActionSchema
   )
 
 }

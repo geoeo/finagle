@@ -1,8 +1,9 @@
 package CtrlCommands.DieCommands
 
-import Gameworld.StateMachine.Actions
-import Model.StateExchangeKeys
-import Model.Traits.Request
+import Model.Schemas.PlayerAction.PlayerActionSchema
+import Model.Schemas.Action.ActionSchema
+import Model.{Actions, StateExchangeKeys}
+import Model.Traits.PlayerAction
 import play.api.libs.json.{Json, JsValue}
 
 /**
@@ -11,11 +12,8 @@ import play.api.libs.json.{Json, JsValue}
  * Date: 20/10/2014
  * Time: 22:44
  */
-object DeadCommand extends Request {
+object DeadCommand extends PlayerAction {
 
-  def retrieve: JsValue = Json.obj(
-    StateExchangeKeys.StateCtrl -> "dying",
-    StateExchangeKeys.PlayerAction -> Json.obj(StateExchangeKeys.Action -> Actions.Dead)
-  )
+  def retrieve = new PlayerActionSchema("dying",new ActionSchema(Actions.Dead))
 
 }

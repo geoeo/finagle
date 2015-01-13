@@ -1,8 +1,9 @@
 package CtrlCommands.MovementCommands
 
-import Gameworld.StateMachine.Actions
-import Model.StateExchangeKeys
-import Model.Traits.Request
+import Model.Schemas.Action.ActionSchema
+import Model.Schemas.PlayerAction.PlayerActionSchema
+import Model.{Actions, StateExchangeKeys}
+import Model.Traits.PlayerAction
 import play.api.libs.json.{JsValue, Json}
 
 /**
@@ -11,9 +12,6 @@ import play.api.libs.json.{JsValue, Json}
  * Date: 12/10/2014
  * Time: 23:05
  */
-object IdleCommand extends Request {
-  def retrieve: JsValue = Json.obj(
-    StateExchangeKeys.StateCtrl -> "moving",
-    StateExchangeKeys.PlayerAction -> Json.obj(StateExchangeKeys.Action -> Actions.Idle)
-  )
+object IdleCommand extends PlayerAction {
+  def retrieve = new PlayerActionSchema("moving",new ActionSchema(Actions.Idle))
 }

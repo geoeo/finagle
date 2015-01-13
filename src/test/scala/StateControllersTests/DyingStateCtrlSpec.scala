@@ -3,9 +3,10 @@ package StateControllersTests
 import CtrlCommands.DieCommands.{DeadCommand, DyingCommand}
 import Gameworld.StateMachine.DyingStates.{DeadState, DyingState}
 import Gameworld.StateMachine.StateControllers.DieStateCtrl
-import Model.ValidTransition
+import Gameworld.StateMachine.Traits.FSMController
+import Model.Responses.ValidTransition
 import org.junit.runner.RunWith
-import org.scalamock.specs2.MockFactory
+import org.scalamock.specs2.MockContext
 import org.specs2.mutable.Specification
 import org.specs2.runner.JUnitRunner
 import org.specs2.specification.Scope
@@ -18,9 +19,9 @@ import play.api.libs.json.JsValue
  * Time: 22:20
  */
 @RunWith(classOf[JUnitRunner])
-class DyingStateCtrlSpec extends Specification with MockFactory  {
+class DyingStateCtrlSpec extends Specification {
 
-  trait withDyingStateCtrl extends Scope {
+  trait withDyingStateCtrl extends Scope with MockContext {
     val ctrl = new DieStateCtrl()
   }
 
@@ -38,11 +39,11 @@ class DyingStateCtrlSpec extends Specification with MockFactory  {
     "dying to dead is a valid action chain" in new withDyingStateCtrl {
       val dyingState = mock[DyingState]
       val deadState = mock[DeadState]
-      val action = (DyingCommand.retrieve \ "playerAction").asOpt[JsValue].get
+      val playerAction = DyingCommand.retrieve.playerAction
 
-      (dyingState.DetermineNextStateAndApply _).expects(action).returning(ValidTransition.retrieve,deadState)
+      (dyingState.DetermineNextStateAndApply _).expects(playerAction.action).returning(ValidTransition.retrieve,deadState)
 
-      ctrl.Apply(action,dyingState)
+      ctrl.Apply(playerAction,dyingState)
     }
 
 

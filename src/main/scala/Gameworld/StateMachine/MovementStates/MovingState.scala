@@ -1,8 +1,6 @@
 package Gameworld.StateMachine.MovementStates
 
-import Gameworld.StateMachine.Traits.FSM
 import Gameworld.StateMachine.Traits.MovingTraits.Moving
-import Model.{ValidTransition, InvalidRequest}
 import play.api.libs.json.{Json, JsValue}
 
 /**

@@ -1,8 +1,8 @@
 package Gameworld.StateMachine.AbstractStates
 
-import Gameworld.StateMachine.Actions
 import Gameworld.StateMachine.DyingStates.{DyingState, DeadState}
 import Gameworld.StateMachine.Traits.FSM
+import Model.Actions
 import play.api.libs.json.JsValue
 
 /**

@@ -1,4 +1,4 @@
-package Gameworld.StateMachine
+package Model
 
 /**
  * Created with IntelliJ IDEA.

@@ -7,9 +7,9 @@ import Gameworld.StateMachine.JumpingStates.JumpingState
 import Gameworld.StateMachine.MovementStates._
 import Gameworld.StateMachine.StateControllers.AbstractController.AFSMController
 import Gameworld.StateMachine.StateControllers._
-import Model.{InvalidTransition, ValidTransition}
+import Model.Responses.{ValidTransition, InvalidTransition}
 import org.junit.runner.RunWith
-import org.scalamock.specs2.MockFactory
+import org.scalamock.specs2.MockContext
 import org.specs2.mutable._
 import org.specs2.runner.JUnitRunner
 import org.specs2.specification.Scope
@@ -22,9 +22,9 @@ import play.api.libs.json.JsValue
  * Time: 17:53
  */
 @RunWith(classOf[JUnitRunner])
-class MovementStateCtrlSpec extends Specification with MockFactory {
+class MovementStateCtrlSpec extends Specification {
 
-  trait withMovementStateCtrl extends Scope {
+  trait withMovementStateCtrl extends Scope with MockContext {
     val ctrl = new MovementStateCtrl()
   }
 
@@ -51,41 +51,41 @@ class MovementStateCtrlSpec extends Specification with MockFactory {
     "stay in idle on idle" in new withMovementStateCtrl {
 
       val idleState = mock[IdleState]
-      val action = (IdleCommand.retrieve \ "playerAction").asOpt[JsValue].get
+      val playerAction = IdleCommand.retrieve.playerAction
 
-      (idleState.DetermineNextStateAndApply _).expects(action).returning(ValidTransition.retrieve,idleState)
+      (idleState.DetermineNextStateAndApply _).expects(playerAction.action).returning(ValidTransition.retrieve,idleState)
 
-      ctrl.Apply(action,idleState)
+      ctrl.Apply(playerAction,idleState)
 
     }
 
     "switch state on dodging" in new withMovementStateCtrl {
       val idleState = mock[IdleState]
       val dodgeState = mock[DodgeState]
-      val action = (DodgeCommand.retrieve \ "playerAction").asOpt[JsValue].get
+      val playerAction = DodgeCommand.retrieve.playerAction
 
-      (idleState.DetermineNextStateAndApply _).expects(action).returning(ValidTransition.retrieve,dodgeState)
+      (idleState.DetermineNextStateAndApply _).expects(playerAction.action).returning(ValidTransition.retrieve,dodgeState)
 
-      ctrl.Apply(action,idleState)
+      ctrl.Apply(playerAction,idleState)
     }
 
     "switch state on moving" in new withMovementStateCtrl {
       val idleState = mock[IdleState]
       val moveState = mock[MovingState]
-      val action = (MoveCommand.retrieve \ "playerAction").asOpt[JsValue].get
+      val playerAction = MoveCommand.retrieve.playerAction
 
-      (idleState.DetermineNextStateAndApply _).expects(action).returning(ValidTransition.retrieve,moveState)
+      (idleState.DetermineNextStateAndApply _).expects(playerAction.action).returning(ValidTransition.retrieve,moveState)
 
-      ctrl.Apply(action,idleState)
+      ctrl.Apply(playerAction,idleState)
     }
     "switch state on attacking" in new withMovementStateCtrl {
       val idleState = mock[IdleState]
       val attackingState = mock[AttackingState]
-      val action = (MoveCommand.retrieve \ "playerAction").asOpt[JsValue].get
+      val playerAction = MoveCommand.retrieve.playerAction
 
-      (idleState.DetermineNextStateAndApply _).expects(action).returning(ValidTransition.retrieve,attackingState)
+      (idleState.DetermineNextStateAndApply _).expects(playerAction.action).returning(ValidTransition.retrieve,attackingState)
 
-      ctrl.Apply(action,idleState)
+      ctrl.Apply(playerAction,idleState)
     }
 
     "idle to move to dodge is a valid chain" in new withMovementStateCtrl {
@@ -94,14 +94,14 @@ class MovementStateCtrlSpec extends Specification with MockFactory {
       val moveState = mock[MovingState]
       val dodgeState = mock[DodgeState]
 
-      val action = (MoveCommand.retrieve \ "playerAction").asOpt[JsValue].get
-      val action2 = (DodgeCommand.retrieve \ "playerAction").asOpt[JsValue].get
+      val playerAction = MoveCommand.retrieve.playerAction
+      val playerAction2 = DodgeCommand.retrieve.playerAction
 
-      (idleState.DetermineNextStateAndApply _).expects(action).returning(ValidTransition.retrieve,moveState)
-      (moveState.DetermineNextStateAndApply _).expects(action2).returning(ValidTransition.retrieve,dodgeState)
+      (idleState.DetermineNextStateAndApply _).expects(playerAction.action).returning(ValidTransition.retrieve,moveState)
+      (moveState.DetermineNextStateAndApply _).expects(playerAction2.action).returning(ValidTransition.retrieve,dodgeState)
 
-      ctrl.Apply(action,idleState)
-      ctrl.Apply(action2,moveState)
+      ctrl.Apply(playerAction,idleState)
+      ctrl.Apply(playerAction2,moveState)
 
     }
 
@@ -110,11 +110,11 @@ class MovementStateCtrlSpec extends Specification with MockFactory {
       val idleState = mock[IdleState]
       val attackingState = mock[AttackingState]
 
-      val action = (AttackingCommand.retrieve \ "playerAction").asOpt[JsValue].get
+      val playerAction = AttackingCommand.retrieve.playerAction
 
-      (idleState.DetermineNextStateAndApply _).expects(action).returning(ValidTransition.retrieve,attackingState)
+      (idleState.DetermineNextStateAndApply _).expects(playerAction.action).returning(ValidTransition.retrieve,attackingState)
 
-      ctrl.Apply(action,idleState)
+      ctrl.Apply(playerAction,idleState)
 
     }
 
@@ -123,13 +123,13 @@ class MovementStateCtrlSpec extends Specification with MockFactory {
       val idleState = mock[IdleState]
       val attackingState = mock[AttackingState]
 
-      val action = (AttackingCommand.retrieve \ "playerAction").asOpt[JsValue].get
+      val playerAction = AttackingCommand.retrieve.playerAction
 
-      (idleState.DetermineNextStateAndApply _).expects(action).returning(ValidTransition.retrieve,attackingState)
-      (attackingState.DetermineNextStateAndApply _).expects(action).returning(ValidTransition.retrieve,attackingState)
+      (idleState.DetermineNextStateAndApply _).expects(playerAction.action).returning(ValidTransition.retrieve,attackingState)
+      (attackingState.DetermineNextStateAndApply _).expects(playerAction.action).returning(ValidTransition.retrieve,attackingState)
 
-      ctrl.Apply(action,idleState)
-      ctrl.Apply(action,attackingState)
+      ctrl.Apply(playerAction,idleState)
+      ctrl.Apply(playerAction,attackingState)
 
     }
 
@@ -139,14 +139,14 @@ class MovementStateCtrlSpec extends Specification with MockFactory {
       val movingState = mock[MovingState]
       val attackingState = mock[AttackingState]
 
-      val action = (AttackingCommand.retrieve \ "playerAction").asOpt[JsValue].get
-      val action2 = (MoveCommand.retrieve \ "playerAction").asOpt[JsValue].get
+      val playerAction = AttackingCommand.retrieve.playerAction
+      val playerAction2 = MoveCommand.retrieve.playerAction
 
-      (idleState.DetermineNextStateAndApply _).expects(action2).returning(ValidTransition.retrieve,movingState)
-      (movingState.DetermineNextStateAndApply _).expects(action).returning(ValidTransition.retrieve,attackingState)
+      (idleState.DetermineNextStateAndApply _).expects(playerAction2.action).returning(ValidTransition.retrieve,movingState)
+      (movingState.DetermineNextStateAndApply _).expects(playerAction.action).returning(ValidTransition.retrieve,attackingState)
 
-      ctrl.Apply(action2,idleState)
-      ctrl.Apply(action,movingState)
+      ctrl.Apply(playerAction2,idleState)
+      ctrl.Apply(playerAction,movingState)
 
     }
 
@@ -156,14 +156,14 @@ class MovementStateCtrlSpec extends Specification with MockFactory {
       val dodgingState = mock[MovingState]
       val attackingState = mock[AttackingState]
 
-      val action = (AttackingCommand.retrieve \ "playerAction").asOpt[JsValue].get
-      val action2 = (DodgeCommand.retrieve \ "playerAction").asOpt[JsValue].get
+      val playerAction = AttackingCommand.retrieve.playerAction
+      val playerAction2 = DodgeCommand.retrieve.playerAction
 
-      (idleState.DetermineNextStateAndApply _).expects(action2).returning(ValidTransition.retrieve,dodgingState)
-      (dodgingState.DetermineNextStateAndApply _).expects(action).returning(InvalidTransition.retrieve,idleState)
+      (idleState.DetermineNextStateAndApply _).expects(playerAction2.action).returning(ValidTransition.retrieve,dodgingState)
+      (dodgingState.DetermineNextStateAndApply _).expects(playerAction.action).returning(InvalidTransition.retrieve,idleState)
 
-      ctrl.Apply(action2,idleState)
-      ctrl.Apply(action,dodgingState)
+      ctrl.Apply(playerAction2,idleState)
+      ctrl.Apply(playerAction,dodgingState)
 
     }
 
@@ -172,14 +172,13 @@ class MovementStateCtrlSpec extends Specification with MockFactory {
       val idleState = mock[IdleState]
       val moveState = mock[MovingState]
 
-      val action = (MoveCommand.retrieve \ "playerAction").asOpt[JsValue].get
-      val action2 = (DodgeCommand.retrieve \ "playerAction").asOpt[JsValue].get
+      val playerAction = MoveCommand.retrieve.playerAction
 
-      (idleState.DetermineNextStateAndApply _).expects(action).returning(ValidTransition.retrieve,moveState)
-      (moveState.DetermineNextStateAndApply _).expects(action).returning(ValidTransition.retrieve,moveState)
+      (idleState.DetermineNextStateAndApply _).expects(playerAction.action).returning(ValidTransition.retrieve,moveState)
+      (moveState.DetermineNextStateAndApply _).expects(playerAction.action).returning(ValidTransition.retrieve,moveState)
 
-      ctrl.Apply(action,idleState)
-      ctrl.Apply(action,moveState)
+      ctrl.Apply(playerAction,idleState)
+      ctrl.Apply(playerAction,moveState)
 
     }
 
@@ -187,11 +186,11 @@ class MovementStateCtrlSpec extends Specification with MockFactory {
 
       val idleState = mock[IdleState]
 
-      val action = (DodgeCommand.retrieve \ "playerAction").asOpt[JsValue].get
+      val playerAction = DodgeCommand.retrieve.playerAction
 
-      (idleState.DetermineNextStateAndApply _).expects(action).returning(InvalidTransition.retrieve,idleState)
+      (idleState.DetermineNextStateAndApply _).expects(playerAction.action).returning(InvalidTransition.retrieve,idleState)
 
-      ctrl.Apply(action,idleState)
+      ctrl.Apply(playerAction,idleState)
 
     }
 
@@ -200,11 +199,11 @@ class MovementStateCtrlSpec extends Specification with MockFactory {
       val idleState = mock[IdleState]
       val attackingState = mock[AttackingState]
 
-      val action = (DodgeCommand.retrieve \ "playerAction").asOpt[JsValue].get
+      val playerAction = DodgeCommand.retrieve.playerAction
 
-      (attackingState.DetermineNextStateAndApply _).expects(action).returning(InvalidTransition.retrieve,idleState)
+      (attackingState.DetermineNextStateAndApply _).expects(playerAction.action).returning(InvalidTransition.retrieve,idleState)
 
-      ctrl.Apply(action,attackingState)
+      ctrl.Apply(playerAction,attackingState)
 
     }
 
@@ -213,9 +212,9 @@ class MovementStateCtrlSpec extends Specification with MockFactory {
       val attackingState = mock[AttackingState]
       val comboState = mock[ComboAttackState]
 
-      val comboAttack = (AttackingCommand.retrieve \ "playerAction").asOpt[JsValue].get
+      val comboAttack = AttackingCommand.retrieve.playerAction
 
-      (attackingState.DetermineNextStateAndApply _).expects(comboAttack).returning(ValidTransition.retrieve,comboState)
+      (attackingState.DetermineNextStateAndApply _).expects(comboAttack.action).returning(ValidTransition.retrieve,comboState)
 
       ctrl.Apply(comboAttack,attackingState)
 
@@ -227,9 +226,9 @@ class MovementStateCtrlSpec extends Specification with MockFactory {
       val endOfCombo = mock[EndOfComboState]
       val comboState = mock[ComboAttackState]
 
-      val comboAttack = (AttackingCommand.retrieve \ "playerAction").asOpt[JsValue].get
+      val comboAttack = AttackingCommand.retrieve.playerAction
 
-      (comboState.DetermineNextStateAndApply _).expects(comboAttack).returning(ValidTransition.retrieve,endOfCombo)
+      (comboState.DetermineNextStateAndApply _).expects(comboAttack.action).returning(ValidTransition.retrieve,endOfCombo)
 
       ctrl.Apply(comboAttack,comboState)
 
@@ -240,9 +239,9 @@ class MovementStateCtrlSpec extends Specification with MockFactory {
       val endOfCombo = mock[EndOfComboState]
       val idleState = mock[IdleState]
 
-      val idleCommand = (IdleCommand.retrieve \ "playerAction").asOpt[JsValue].get
+      val idleCommand = IdleCommand.retrieve.playerAction
 
-      (endOfCombo.DetermineNextStateAndApply _).expects(idleCommand).returning(ValidTransition.retrieve,idleState)
+      (endOfCombo.DetermineNextStateAndApply _).expects(idleCommand.action).returning(ValidTransition.retrieve,idleState)
 
       ctrl.Apply(idleCommand,endOfCombo)
 
@@ -253,9 +252,9 @@ class MovementStateCtrlSpec extends Specification with MockFactory {
       val endOfCombo = mock[EndOfComboState]
       val idleState = mock[IdleState]
 
-      val moveCommand = (MoveCommand.retrieve \ "playerAction").asOpt[JsValue].get
+      val moveCommand = MoveCommand.retrieve.playerAction
 
-      (endOfCombo.DetermineNextStateAndApply _).expects(moveCommand).returning(InvalidTransition.retrieve,idleState)
+      (endOfCombo.DetermineNextStateAndApply _).expects(moveCommand.action).returning(InvalidTransition.retrieve,idleState)
 
       ctrl.Apply(moveCommand,endOfCombo)
 
@@ -266,9 +265,9 @@ class MovementStateCtrlSpec extends Specification with MockFactory {
       val endOfCombo = mock[EndOfComboState]
       val idleState = mock[IdleState]
 
-      val moveCommand = (MoveCommand.retrieve \ "playerAction").asOpt[JsValue].get
+      val moveCommand = MoveCommand.retrieve.playerAction
 
-      (endOfCombo.DetermineNextStateAndApply _).expects(moveCommand).returning(InvalidTransition.retrieve,idleState)
+      (endOfCombo.DetermineNextStateAndApply _).expects(moveCommand.action).returning(InvalidTransition.retrieve,idleState)
 
       ctrl.Apply(moveCommand,endOfCombo)
 
@@ -279,9 +278,9 @@ class MovementStateCtrlSpec extends Specification with MockFactory {
       val endOfCombo = mock[EndOfComboState]
       val idleState = new IdleState()
 
-      val dodgeCommand = (DodgeCommand.retrieve \ "playerAction").asOpt[JsValue].get
+      val dodgeCommand = DodgeCommand.retrieve.playerAction
 
-      (endOfCombo.DetermineNextStateAndApply _).expects(dodgeCommand).returning(InvalidTransition.retrieve,idleState)
+      (endOfCombo.DetermineNextStateAndApply _).expects(dodgeCommand.action).returning(InvalidTransition.retrieve,idleState)
 
       ctrl.Apply(dodgeCommand,endOfCombo)
 
@@ -293,13 +292,13 @@ class MovementStateCtrlSpec extends Specification with MockFactory {
       val moveState = mock[MovingState]
       val dodgeState = mock[DodgeState]
 
-      val action = (MoveCommand.retrieve \ "playerAction").asOpt[JsValue].get
-      val action2 = (DodgeCommand.retrieve \ "playerAction").asOpt[JsValue].get
-      val action3  = (IdleCommand.retrieve \ "playerAction").asOpt[JsValue].get
+      val action = MoveCommand.retrieve.playerAction
+      val action2 = DodgeCommand.retrieve.playerAction
+      val action3  = IdleCommand.retrieve.playerAction
 
-      (idleState.DetermineNextStateAndApply _).expects(action).returning(ValidTransition.retrieve,moveState)
-      (moveState.DetermineNextStateAndApply _).expects(action2).returning(ValidTransition.retrieve,dodgeState)
-      (dodgeState.DetermineNextStateAndApply _).expects(action3).returning(ValidTransition.retrieve,idleState)
+      (idleState.DetermineNextStateAndApply _).expects(action.action).returning(ValidTransition.retrieve,moveState)
+      (moveState.DetermineNextStateAndApply _).expects(action2.action).returning(ValidTransition.retrieve,dodgeState)
+      (dodgeState.DetermineNextStateAndApply _).expects(action3.action).returning(ValidTransition.retrieve,idleState)
 
       ctrl.Apply(action,idleState)
       ctrl.Apply(action2,moveState)
@@ -313,11 +312,11 @@ class MovementStateCtrlSpec extends Specification with MockFactory {
       val moveState = mock[MovingState]
       val dodgeState = mock[DodgeState]
 
-      val action = (MoveCommand.retrieve \ "playerAction").asOpt[JsValue].get
-      val action2 = (DodgeCommand.retrieve \ "playerAction").asOpt[JsValue].get
+      val action = MoveCommand.retrieve.playerAction
+      val action2 = DodgeCommand.retrieve.playerAction
 
-      (idleState.DetermineNextStateAndApply _).expects(action2).returning(ValidTransition.retrieve,dodgeState)
-      (dodgeState.DetermineNextStateAndApply _).expects(action).returning(InvalidTransition.retrieve,idleState)
+      (idleState.DetermineNextStateAndApply _).expects(action2.action).returning(ValidTransition.retrieve,dodgeState)
+      (dodgeState.DetermineNextStateAndApply _).expects(action.action).returning(InvalidTransition.retrieve,idleState)
 
       ctrl.Apply(action2,idleState)
       ctrl.Apply(action,dodgeState)

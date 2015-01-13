@@ -1,9 +1,9 @@
 package Gameworld.StateMachine.AbstractStates
 
-import Gameworld.StateMachine.Actions
 import Gameworld.StateMachine.MovementStates._
 import Gameworld.StateMachine.Traits.FSM
 import Gameworld.StateMachine.Traits.MovingTraits.ComboAttack
+import Model.Actions
 import play.api.libs.json.JsValue
 
 /**

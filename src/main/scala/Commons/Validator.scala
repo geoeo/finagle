@@ -1,6 +1,7 @@
 package Commons
 
 import Model.Schemas.PlayerAction.PlayerActionSchema
+import Model.Schemas.Action.ActionSchema
 import Model.Schemas.Request.RequestSchema
 import Model.StateExchangeKeys
 import play.api.libs.json._
@@ -17,18 +18,18 @@ import Model.Schemas.Request._
 
 object Validator {
 
+  implicit val actionRead : Reads[ActionSchema] =
+    (JsPath \ StateExchangeKeys.Action).read[String].map(ActionSchema)
 
   implicit val playerActionRead : Reads[PlayerActionSchema] = (
-    (JsPath \ StateExchangeKeys.StateCtrl).read[String] and
-      (JsPath \ StateExchangeKeys.PlayerAction).read[String] and
-      (JsPath \ StateExchangeKeys.Action).read[String]
+      (JsPath \ StateExchangeKeys.StateCtrl).read[String] and
+      (JsPath \ StateExchangeKeys.PlayerAction).read[ActionSchema]
     )(PlayerActionSchema.apply _)
-
 
   implicit val requestReads :Reads[RequestSchema] = (
         (JsPath \ StateExchangeKeys.Name).read[String] and
         (JsPath \ StateExchangeKeys.Data).read[String] and
-        (JsPath \ StateExchangeKeys.PlayerAction).read[PlayerActionSchema]
+        (JsPath \ StateExchangeKeys.PlayerData).read[PlayerActionSchema]
       )(RequestSchema.apply _)
 
 

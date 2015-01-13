@@ -1,7 +1,9 @@
 package CtrlCommands.MovementCommands
 
-import Gameworld.StateMachine.Actions
-import Model.StateExchangeKeys
+import Model.Schemas.Action.ActionSchema
+import Model.Schemas.PlayerAction.PlayerActionSchema
+import Model.Traits.PlayerAction
+import Model.{Actions, StateExchangeKeys}
 import play.api.libs.json.{Json, JsValue}
 
 /**
@@ -10,10 +12,6 @@ import play.api.libs.json.{Json, JsValue}
  * Date: 22/10/14
  * Time: 22:54
  */
-object AttackingCommand {
-  def retrieve: JsValue = Json.obj(
-    StateExchangeKeys.StateCtrl -> "moving",
-    StateExchangeKeys.PlayerAction -> Json.obj(StateExchangeKeys.Action -> Actions.Attacking)
-  )
-
+object AttackingCommand extends PlayerAction{
+  def retrieve = new PlayerActionSchema("moving",new ActionSchema(Actions.Attacking))
 }

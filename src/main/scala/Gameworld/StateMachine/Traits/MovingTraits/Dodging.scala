@@ -1,8 +1,7 @@
 package Gameworld.StateMachine.Traits.MovingTraits
 
 import Gameworld.StateMachine.AbstractStates.AMovementState
-import Gameworld.StateMachine.Actions
-import Model.ValidTransition
+import Model.Actions
 
 /**
  * Created with IntelliJ IDEA.

@@ -1,5 +1,6 @@
 package Gameworld.StateMachine.Traits
 
+import Model.Schemas.{PlayerAction, Action}
 import play.api.libs.json.JsValue
 
 /**
@@ -12,10 +13,10 @@ trait FSMController {
 
   var mCurrentState : FSM
 
-  def DetermineControllerFrom(command : JsValue): (JsValue,FSMController)
+  def DetermineControllerFrom(command : PlayerAction.PlayerActionSchema): (JsValue,FSMController)
 
-  def Apply(command : JsValue, currentState : FSM) = {
-    val (result, newState) = currentState.DetermineNextStateAndApply(command)
+  def Apply(command : Action.ActionSchema, currentState : FSM) = {
+    val (result, newState) = currentState.DetermineNextStateAndApply(command.action)
 
     mCurrentState = newState
 

@@ -9,6 +9,7 @@ package Model
 object StateExchangeKeys {
 
   val PlayerAction = "playerAction"
+  val PlayerData = "playerData"
   val Action = "action"
   val StateCtrl = "stateCtrl"
   val Name = "name"
